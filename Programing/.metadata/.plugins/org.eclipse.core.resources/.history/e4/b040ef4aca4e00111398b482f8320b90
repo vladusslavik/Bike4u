@@ -1,0 +1,454 @@
+#include "st7789v3.h"
+
+
+volatile uint32_t pixels;
+static volatile uint8_t data[3];
+
+rotation Data_Control = 0;
+
+DMA_Actions current_action;
+//volatile uint8_t actions = 0b00000000; // 0  - FillScreen
+//
+//#define FillSCRN		(1 << 0)
+
+void EnableTransmit(uint16_t size, volatile uint8_t *addres_memory){
+
+	DMA1_Channel3->CCR &= ~DMA_CCR_EN;
+
+	DMA1->IFCR = DMA_IFCR_CGIF3 |
+	                 DMA_IFCR_CTCIF3 |
+	                 DMA_IFCR_CHTIF3 |
+	                 DMA_IFCR_CTEIF3;
+
+	CS_LOW;
+	DCX_DATA;
+	DMA1_Channel3->CNDTR = size;
+	DMA1_Channel3->CMAR = (uint32_t)addres_memory;
+
+	DMA1_Channel3->CCR |= DMA_CCR_EN;
+
+}
+
+void WriteCmd(uint8_t command){
+
+	CS_LOW;
+
+	while(SPI1->SR & SPI_SR_BSY);
+	DCX_CMD;
+	SPI1->CR1 |= SPI_CR1_SPE;
+	SPI1->DR = command;
+
+	while(!(SPI1->SR & SPI_SR_TXE));
+	while(SPI1->SR & SPI_SR_BSY);
+	CS_HIGH;
+}
+void WriteParameters(uint8_t *parameters, uint8_t size){
+
+
+	CS_LOW;
+
+	while(SPI1->SR & SPI_SR_BSY);
+	DCX_DATA;
+	SPI1->CR1 |= SPI_CR1_SPE;
+
+	EnableTransmit(size, parameters);
+//
+//	for(uint8_t i = 0; i < size; i++){
+//
+//		while(!(SPI1->SR & SPI_SR_TXE));
+//		SPI1->DR = parameters[i];
+//
+//	}
+	while(!(DMA1->ISR & DMA_ISR_TCIF3));
+
+	DMA1_Channel3->CCR &= ~DMA_CCR_EN;
+
+	// очистити флаг
+	//DMA1->IFCR |= DMA_IFCR_CTCIF3;
+	DMA1->IFCR = DMA_IFCR_CGIF3 |
+		                 DMA_IFCR_CTCIF3 |
+		                 DMA_IFCR_CHTIF3 |
+		                 DMA_IFCR_CTEIF3;
+
+
+
+	while(SPI1->SR & SPI_SR_BSY);
+
+	//CS_HIGH;
+
+}
+
+
+void InitDMA(){
+
+	/////************InitDMAtoSPI************/////
+
+	SPI1->CR2 |= SPI_CR2_TXDMAEN;
+
+
+
+	RCC->AHBENR |= RCC_AHBENR_DMA1EN;				// Вмикаємо тактування на DMA
+
+	DMA1_CSELR->CSELR &= ~DMA_CSELR_C3S;			// Очищаємо біти в регістрі CSELR на каналі 3
+	DMA1_CSELR->CSELR |= (0b0001 << DMA_CSELR_C3S_Pos);	// Для каналу 3 вписуємо 0b0001 для вибору SP1_TX
+
+	DMA1_Channel3->CCR &= ~DMA_CCR_MEM2MEM;			// Вимикаємо режим Memmory to Memmory
+
+	DMA1_Channel3->CCR |= DMA_CCR_PL_1;				// Ставимо середній приорітет
+
+	DMA1_Channel3->CCR &= ~DMA_CCR_MSIZE;			// Очищаємо біти для того щоб обрати 8 бітний режим передачі
+	DMA1_Channel3->CCR &= ~DMA_CCR_PSIZE;			// Очищаємо біти для того щоб обрати 8 бітний режим передачі
+
+	DMA1_Channel3->CCR |= DMA_CCR_MINC;				// Вмикаємо інкрементацію адресу памʼяті
+	DMA1_Channel3->CCR &= ~DMA_CCR_PINC;			// Вимикаємо інкрементаціяю адресу переферії
+
+	DMA1_Channel3->CCR &= ~DMA_CCR_CIRC;			// Вимикаємо циклічний режим
+
+	DMA1_Channel3->CCR |= DMA_CCR_DIR;				// Вмикаємо читання з памʼяті, тобто Memory to Peripheral
+
+	DMA1_Channel3->CCR |= DMA_CCR_TEIE;				// Вмикаємо переривання на помилку
+	DMA1_Channel3->CCR &= ~DMA_CCR_HTIE;			// Вимикаємо переривання на половину передачі
+	DMA1_Channel3->CCR |= DMA_CCR_TCIE;				// Вмикаємо переривання на завершення передачі
+
+
+	NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
+
+	DMA1_Channel3->CPAR = (uint32_t)&SPI1->DR;
+
+	SPI1->CR1 |= SPI_CR1_SPE;
+
+}
+
+void InitST7789V3(){
+
+SPI1->CR1 |= SPI_CR1_BIDIOE;
+
+InitDMA();
+
+uint8_t command;
+//RES_HIGH;
+	// SWRESET
+command = SWRESET;
+WriteCmd(command);
+HAL_Delay(150);
+	// Display off
+command = DISPOFF;
+WriteCmd(command);
+	// Sleep out
+command = SLPOUT;
+WriteCmd(command);
+HAL_Delay(5);
+	// Normal display mode
+command  = NORON;
+WriteCmd(command);
+	// Display inversion off
+command = INVON;
+WriteCmd(command);
+	// Tearing effects line off
+command = TEOFF;
+WriteCmd(command);
+	// Idle mode  off
+command = IDMOFF;
+WriteCmd(command);
+	// Interface pixel format (COLMOD)
+command = COLMOD;
+WriteCmd(command);
+command = bit_interface;
+WriteParameters(&command, 1);
+
+	// Display on
+command = DISPON;
+WriteCmd(command);
+BLK_HIGH;
+
+// CTRL Display
+command = 0x53;
+WriteCmd(command);
+command =  (1<<5)   // BCTRL = 1 (Brightness Control On)
+       | (1<<3) // DD = 0 (Dimming off)
+       | (1<<2); // BL = 1 (Backlight On);
+WriteParameters(&command, 1);
+
+
+
+}
+
+void SetPixel(uint16_t x_position, uint16_t y_position, uint8_t red, uint8_t green, uint8_t blue){
+
+	if (red > 63)	red = 63;
+	if (green > 63)	green = 63;
+	if (blue > 63) 	blue = 63;
+
+	red = 	(red << 2);
+	green = (green << 2);
+	blue = 	(blue << 2);
+
+	uint8_t command;
+	CS_LOW;
+
+	command = CASET;
+	WriteCmd(command);
+
+	uint8_t parameters[4];
+	parameters[0] = x_position >> 8;
+	parameters[1] = x_position;
+	parameters[2] =	x_position >> 8;
+	parameters[3] =	x_position;
+
+	WriteParameters(parameters, 4);
+
+
+	command = RASET;
+	WriteCmd(command);
+
+	parameters[0] = y_position >> 8;
+	parameters[1] = y_position;
+	parameters[2] = y_position >> 8;
+	parameters[3] = y_position;
+	WriteParameters(parameters, 4);
+
+	command = RAMWR;
+	WriteCmd(command);
+
+	uint8_t pixels[3] = {red, green, blue};
+	WriteParameters(pixels, 3);
+
+	CS_HIGH;
+}
+
+void FillScreen(uint8_t red, uint8_t green, uint8_t blue)
+{
+	//actions |= FillSCRN;
+
+    uint8_t cmd;
+    data[0] = (red > 63) ? 63 : red;
+    data[1] = (green > 63) ? 63 : green;
+    data[2] = (blue > 63) ? 63 : blue;
+
+    cmd = CASET;
+    WriteCmd(cmd);
+    uint8_t caset[4] = {0x00, 0x00, 0x00, 0xEF};
+    WriteParameters(caset, 4);
+
+    cmd = RASET;
+    WriteCmd(cmd);
+
+    uint8_t raset[4] = {
+            (Y_OFFSET >> 8) & 0xFF, // Y0 high byte
+            (Y_OFFSET) & 0xFF,      // Y0 low byte
+            ((Y_OFFSET + 279) >> 8) & 0xFF, // Y1 high byte
+            ((Y_OFFSET + 279) & 0xFF)        // Y1 low byte
+        };
+    WriteParameters(raset, 4);
+
+    cmd = RAMWR;
+    WriteCmd(cmd);
+
+    pixels = 67200;
+    while(SPI1->SR & SPI_SR_BSY);
+
+    current_action = FillScrn;
+    //DMA2_Stream2->CR |= DMA_SxCR_DBM;
+   // DMA2_Stream2->CR |= DMA_SxCR_CIRC;
+    		//67200 - 655535 = 1665
+//if(red == 0 && green == 0 && blue == 0){
+//	DMA2_Stream2->CR |= DMA_SxCR_CIRC;
+//	DMA2_Stream2->CR &= DMA_SxCR_MINC;
+//	EnableTransmit(0xFFFF, data);
+//}
+//
+//else
+    EnableTransmit(3, data);
+
+}
+void SetBrighteness(uint8_t brightness){
+
+	CS_LOW;
+
+	    uint8_t cmd = WRDISBV;
+	    DCX_CMD;
+	    HAL_SPI_Transmit(&hspi1, &cmd, 1, 10);
+
+	    DCX_DATA;
+	    HAL_SPI_Transmit(&hspi1, &brightness, 1, 10);
+
+	    CS_HIGH;
+
+}
+
+void DrawPicture(const uint8_t* data) {
+    uint8_t cmd;
+
+    cmd = 0x2A; // CASET
+    WriteCmd(cmd);
+    uint8_t caset[4] = {0x00, 0x00, 0x00, 0xEF};
+    WriteParameters(caset, 4);
+
+    cmd = 0x2B; // RASET
+    WriteCmd(cmd);
+    uint8_t raset[4] = {
+        (Y_OFFSET >> 8) & 0xFF,
+        (Y_OFFSET) & 0xFF,
+        ((Y_OFFSET + 279) >> 8) & 0xFF,
+        ((Y_OFFSET + 279) & 0xFF)
+    };
+    WriteParameters(raset, 4);
+
+    cmd = 0x2C; // RAMWR
+    WriteCmd(cmd);
+
+    while(SPI1->SR & SPI_SR_BSY);
+
+    DCX_DATA;
+    CS_LOW;
+
+    uint32_t total_bytes = 240 * 280 * 3; // 201,600 байтів
+
+    for (uint32_t i = 0; i < total_bytes; i++) {
+        while (!(SPI1->SR & SPI_SR_TXE));
+        SPI1->DR = data[i];
+    }
+
+    while(SPI1->SR & SPI_SR_BSY);
+    CS_HIGH;
+}
+
+void ST7789_SetScrollArea(uint16_t tfa, uint16_t vsa, uint16_t bfa) {
+    WriteCmd(VSCRDEF);
+    uint8_t data[6];
+    data[0] = tfa >> 8; // Top Fixed Area (верхня нерухома зона)
+    data[1] = tfa & 0xFF;
+    data[2] = vsa >> 8; // Vertical Scrolling Area (зона самого скролу)
+    data[3] = vsa & 0xFF;
+    data[4] = bfa >> 8; // Bottom Fixed Area (нижня нерухома зона)
+    data[5] = bfa & 0xFF;
+    WriteParameters(data, 6);
+}
+void ST7789_SetScrollAddress(uint16_t vsp) {
+    WriteCmd(VSCSAD);
+    uint8_t data[2];
+    data[0] = vsp >> 8;
+    data[1] = vsp & 0xFF;
+    WriteParameters(data, 2);
+}
+
+void DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size){
+//
+	uint8_t rows = ROWS;
+	uint8_t colm = COLUMNS;
+
+		for(uint8_t i = 0; i < rows*size ;i++){
+				for(uint8_t b = 0; b < colm*size;b++){
+
+				uint8_t reverse = 7 - (b / size);
+				uint8_t bin = (font_ascii_8x8[(uint8_t)ch][i/size] >> (reverse)) & 1;
+
+
+
+				if(bin & 1) SetPixel(x+b, y+i, color[0], color[1], color[2]);
+				}
+			}
+
+}
+
+void DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, uint8_t size){
+
+	while(*str){
+
+	if(x + (COLUMNS*size) > WIDTH)
+		break;
+
+	DrawChar(x, y, (uint8_t)*str, color, size);
+
+	x += COLUMNS*size + (COLUMNS*size)/16;
+	str++;
+	}
+
+}
+
+void DataAccessControl(rotation parameter){
+
+	WriteCmd(MADCTL);
+	WriteParameters(&parameter, 1);
+
+}
+
+
+//void DMA2_Stream2_IRQHandler(void){
+//
+//	if(DMA2->LISR & DMA_LISR_TCIF2){
+//
+//		DMA2_Stream2->CR &= ~DMA_SxCR_EN;
+//		while (DMA2_Stream2->CR & DMA_SxCR_EN);
+//
+//		switch(current_action){
+//		case(WRTParameters):
+//
+//						break;
+//
+//
+//		case(FillScrn):
+////
+////		static uint8_t buffer = 0;
+////
+////		if(buffer ==  4){
+////
+////			CS_HIGH;
+////			current_action = WRTParameters;
+////			buffer = 0;
+////			//DMA2_Stream2->CR &= ~DMA_SxCR_DBM;
+////			DMA2_Stream2->CR &= ~DMA_SxCR_CIRC;
+////
+////		}
+////		else if(buffer ==  3){
+////
+////
+////				DMA2->LIFCR = DMA_LIFCR_CTCIF2 | DMA_LIFCR_CHTIF2
+////						| DMA_LIFCR_CTEIF2 | DMA_LIFCR_CFEIF2;
+////				EnableTransmit(4995, data);
+////				buffer++;
+////				return;
+////
+////		}
+////		else{
+////			EnableTransmit(0xFFFF, data);
+////		}
+//
+//
+//		DMA2_Stream2->CR &= ~DMA_SxCR_EN;
+//				while (DMA2_Stream2->CR & DMA_SxCR_EN);
+//
+//
+//				if(pixels == 0 || pixels > 67200){
+//
+//					CS_HIGH;
+//					current_action = WRTParameters;
+//
+//				}
+//				else{
+//					pixels--;
+//					DMA2->LIFCR = DMA_LIFCR_CTCIF2
+//						            | DMA_LIFCR_CHTIF2
+//						            | DMA_LIFCR_CTEIF2
+//						            | DMA_LIFCR_CFEIF2;
+//					EnableTransmit(3, data);
+//
+//				}
+//				break;
+//
+//		}
+//
+//
+//	}
+//
+//	DMA2->LIFCR = DMA_LIFCR_CTCIF2
+//	            | DMA_LIFCR_CHTIF2
+//	            | DMA_LIFCR_CTEIF2
+//	            | DMA_LIFCR_CFEIF2;
+//}
+
+//void SPI1_IRQHandler(void){
+//
+//	SPI1->SR &= ~SPI_SR_BSY;
+//
+//}

@@ -1,0 +1,254 @@
+!SESSION 2026-04-07 18:00:14.723 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2026-04-07 18:00:54.379
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-07 18:00:54.380
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-07 18:00:58.682
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-07 18:03:51.710
+!MESSAGE Indexed 'Bike4u' (20 sources, 79 headers) in 3.48 sec: 3,472 declarations; 13,590 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+!SESSION 2026-04-09 17:02:56.175 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring -data /Users/admin/Desktop/My Projects/Bike4u/Programing
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-09 17:03:01.115
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-09 17:03:09.292
+!MESSAGE Started RMI Server, listening on port 41338
+!SESSION 2026-04-09 17:04:48.162 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-04-09 17:04:52.025
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-09 17:04:54.798
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-09 17:05:03.969
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:04.691
+!MESSAGE Indexed 'RF_TX' (20 sources, 113 headers) in 4.3 sec: 8,856 declarations; 37,279 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.41%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:06.991
+!MESSAGE Indexed 'Servo_test' (21 sources, 110 headers) in 2.29 sec: 9,198 declarations; 49,655 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.32%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:09.037
+!MESSAGE Indexed 'Make_Delay' (19 sources, 107 headers) in 2.03 sec: 8,704 declarations; 43,730 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.36%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:12.267
+!MESSAGE Indexed 'PlaneFPV_JoyStick' (27 sources, 123 headers) in 3.18 sec: 10,537 declarations; 47,649 references; 3 unresolved inclusions; 26 syntax errors; 171 unresolved names (0.29%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:13.702
+!MESSAGE Indexed 'HID_Gamepad' (17 sources, 104 headers) in 1.43 sec: 6,981 declarations; 24,639 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.59%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:15.675
+!MESSAGE Indexed 'PlaneFPV_JoyStick_C6' (30 sources, 124 headers) in 1.93 sec: 10,885 declarations; 62,611 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.26%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:17.304
+!MESSAGE Indexed 'PlaneFPV_C6' (21 sources, 113 headers) in 1.58 sec: 9,545 declarations; 49,965 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.31%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:18.503
+!MESSAGE Indexed 'Mosfet_p' (19 sources, 109 headers) in 1.18 sec: 8,227 declarations; 29,942 references; 3 unresolved inclusions; 26 syntax errors; 171 unresolved names (0.45%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:19.797
+!MESSAGE Indexed 'Test_rf_tx' (20 sources, 113 headers) in 1.27 sec: 8,834 declarations; 37,101 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.41%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:20.856
+!MESSAGE Indexed 'Some_tests' (17 sources, 104 headers) in 1.03 sec: 6,992 declarations; 24,795 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.59%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:22.336
+!MESSAGE Indexed 'Motor' (27 sources, 117 headers) in 1.43 sec: 9,409 declarations; 51,866 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.31%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:05:23.614
+!MESSAGE Indexed 'Test_rf_rx' (20 sources, 113 headers) in 1.25 sec: 8,835 declarations; 37,074 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.41%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:28:08.326
+!MESSAGE Indexed 'test' (17 sources, 104 headers) in 1.79 sec: 7,010 declarations; 24,923 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.59%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:28:09.543
+!MESSAGE Indexed 'fff' (17 sources, 104 headers) in 1.21 sec: 7,004 declarations; 24,873 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.59%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 17:28:11.708
+!MESSAGE Indexed 'ST7789V3' (21 sources, 124 headers) in 2.16 sec: 11,286 declarations; 43,376 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.44%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 18:16:17.994
+!MESSAGE Indexed 'Bike4u' (31 sources, 130 headers) in 1.61 sec: 12,579 declarations; 66,524 references; 5 unresolved inclusions; 34 syntax errors; 335 unresolved names (0.42%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-09 18:21:32.722
+!MESSAGE Indexed 'Bike4u' (31 sources, 129 headers) in 1.66 sec: 12,444 declarations; 66,605 references; 2 unresolved inclusions; 33 syntax errors; 279 unresolved names (0.35%)
+!SESSION 2026-04-11 10:56:21.022 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-11 10:56:31.771
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-11 10:56:46.302
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-04-26 11:06:01.737 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-26 11:06:22.611
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-26 11:06:42.535
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-04-26 11:11:32.922 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-26 11:11:52.323
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-26 11:12:02.435
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-05-13 15:23:24.524 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-05-13 15:23:44.778
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-05-13 15:24:00.816
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:02.072
+!MESSAGE Indexed 'Bike4u' (29 sources, 126 headers) in 9.85 sec: 11,133 declarations; 55,674 references; 2 unresolved inclusions; 33 syntax errors; 188 unresolved names (0.28%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:05.417
+!MESSAGE Indexed 'HID_Gamepad' (17 sources, 104 headers) in 3.34 sec: 6,981 declarations; 24,639 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.59%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:07.639
+!MESSAGE Indexed 'Make_Delay' (19 sources, 107 headers) in 2.21 sec: 8,704 declarations; 43,730 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.36%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:09.895
+!MESSAGE Indexed 'Mosfet_p' (19 sources, 109 headers) in 2.23 sec: 8,327 declarations; 30,089 references; 3 unresolved inclusions; 27 syntax errors; 171 unresolved names (0.44%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:12.423
+!MESSAGE Indexed 'Motor' (27 sources, 117 headers) in 2.52 sec: 9,409 declarations; 51,866 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.31%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:14.487
+!MESSAGE Indexed 'PlaneFPV_C6' (21 sources, 113 headers) in 2.04 sec: 9,545 declarations; 49,965 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.31%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:16.203
+!MESSAGE Indexed 'PlaneFPV_JoyStick' (27 sources, 123 headers) in 1.7 sec: 10,537 declarations; 47,649 references; 3 unresolved inclusions; 26 syntax errors; 171 unresolved names (0.29%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:17.847
+!MESSAGE Indexed 'PlaneFPV_JoyStick_C6' (30 sources, 124 headers) in 1.63 sec: 10,885 declarations; 62,611 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.26%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:19.270
+!MESSAGE Indexed 'RF_TX' (20 sources, 113 headers) in 1.42 sec: 8,856 declarations; 37,271 references; 2 unresolved inclusions; 37 syntax errors; 188 unresolved names (0.41%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:22.321
+!MESSAGE Indexed 'ST7789V3' (21 sources, 124 headers) in 3.04 sec: 11,286 declarations; 43,376 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.44%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:24.782
+!MESSAGE Indexed 'Servo_test' (21 sources, 110 headers) in 2.45 sec: 9,198 declarations; 49,658 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.32%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:26.551
+!MESSAGE Indexed 'Some_tests' (17 sources, 104 headers) in 1.75 sec: 6,992 declarations; 24,784 references; 2 unresolved inclusions; 37 syntax errors; 188 unresolved names (0.59%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:28.173
+!MESSAGE Indexed 'Test_rf_rx' (20 sources, 113 headers) in 1.61 sec: 8,835 declarations; 37,074 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.41%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:29.669
+!MESSAGE Indexed 'Test_rf_tx' (20 sources, 113 headers) in 1.49 sec: 8,834 declarations; 37,101 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.41%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:31.172
+!MESSAGE Indexed 'fff' (17 sources, 104 headers) in 1.49 sec: 7,004 declarations; 24,873 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.59%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-13 15:24:32.456
+!MESSAGE Indexed 'test' (17 sources, 104 headers) in 1.28 sec: 7,010 declarations; 24,923 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.59%)
+!SESSION 2026-05-16 02:10:49.146 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-05-16 02:11:20.110
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-05-16 02:11:28.732
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-05-16 02:29:48.546 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-05-16 02:32:39.212
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-05-16 02:32:42.756
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-05-16 02:32:52.629
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-05-17 18:25:51.968 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-05-17 18:26:48.826
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-05-17 18:26:59.502
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-05-18 23:05:14.651 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=uk_US
+Framework arguments:  -keyring /Users/admin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/admin/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-05-18 23:05:23.327
+!MESSAGE Log4j2 initialized with config file /Users/admin/Desktop/My Projects/Bike4u/Programing/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-05-18 23:05:33.602
+!MESSAGE Started RMI Server, listening on port 41337
