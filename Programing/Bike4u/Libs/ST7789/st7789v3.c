@@ -1,4 +1,5 @@
 #include "st7789v3.h"
+//#include "stm32l010x8.h"
 
 
 volatile uint32_t pixels;
@@ -16,12 +17,32 @@ DMA_Actions current_action;
 
 void Init_BLK_PWM(){
 
-	// TIM2CH1
+	//TIM2CH1
 
-	GPIOA->MODER |= GPIO_MODER_MODE15_1;
-	GPIOA->MODER &= ~GPIO_MODER_MODE15_0;
+	GPIOA->MODER &= ~GPIO_MODER_MODE15;
+	GPIOA->MODER |= GPIO_MODER_MODE15_1; 				// Задаємо режим GPIO -> AF
 
-	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
+	GPIOA->AFR[1] &= ~GPIO_AFRH_AFSEL15;
+	GPIOA->AFR[1] |= (0b0101 << GPIO_AFRH_AFSEL15_Pos); // GPIOA 15 -> AF5
+
+	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;					// Тактування таймеру 2
+
+	TIM2->CCMR1 &= ~TIM_CCMR1_OC1M;
+	TIM2->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2; // PWM mode 1
+
+	TIM2->CR1 |= TIM_CR1_ARPE;
+	TIM2->CCMR1 |= TIM_CCMR1_OC1PE;
+
+	TIM2->PSC = 0;
+	TIM2->ARR = 99;
+	TIM2->CCR1 = 99;			//Заповнення шиму
+
+	TIM2->CCER |= TIM_CCER_CC1E;
+
+	TIM2->EGR |= TIM_EGR_UG;   // оновити регістри
+
+	TIM2->CR1 |= TIM_CR1_CEN;  //Start
+
 
 
 }
@@ -198,6 +219,8 @@ default :
 	break;
 
 }
+
+Init_BLK_PWM();
 
 }
 
@@ -389,6 +412,24 @@ void DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, uint8_t
 	str++;
 	}
 
+}
+
+void ST7789_Sleep_In(){
+	CS_LOW;
+
+	//uint8_t cmd = SLPIN;
+	WriteCmd(SLPIN);
+
+	CS_HIGH;
+}
+
+void ST7789_Sleep_Out(){
+	CS_LOW;
+
+	//uint8_t cmd = SLPOUT;
+	WriteCmd(SLPOUT);
+
+	CS_HIGH;
 }
 
 void DataAccessControl(rotation parameter){

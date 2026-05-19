@@ -29,6 +29,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h \
+ /Users/admin/Desktop/My\ Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control/control.h \
  /Users/admin/Desktop/My\ Projects/Bike4u/Programing/Bike4u/Libs/NRF24/NRF24.h \
  /Users/admin/Desktop/My\ Projects/Bike4u/Programing/Bike4u/Libs/ST7789/st7789v3.h \
  /Users/admin/Desktop/My\ Projects/Bike4u/Programing/Bike4u/Libs/ST7789/symbols_font.h
@@ -63,6 +64,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h:
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h:
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h:
+/Users/admin/Desktop/My\ Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control/control.h:
 /Users/admin/Desktop/My\ Projects/Bike4u/Programing/Bike4u/Libs/NRF24/NRF24.h:
 /Users/admin/Desktop/My\ Projects/Bike4u/Programing/Bike4u/Libs/ST7789/st7789v3.h:
 /Users/admin/Desktop/My\ Projects/Bike4u/Programing/Bike4u/Libs/ST7789/symbols_font.h:

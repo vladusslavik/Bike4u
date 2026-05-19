@@ -25,6 +25,7 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/STM32L0xx_HAL_Driver/Src \
+Libs/Bike4u_control \
 Libs/NRF24 \
 Libs/ST7789 \
 

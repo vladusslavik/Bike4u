@@ -1,0 +1,6 @@
+#pragma once
+
+#include "main.h"
+
+#define TIM_SET_COMPARE(timer, ch, value) \
+		((timer)->CCR[(ch) - 1] = (value))

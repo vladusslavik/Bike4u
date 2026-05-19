@@ -41,7 +41,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+	extern uint32_t states;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -140,6 +140,112 @@ void SysTick_Handler(void)
 /* please refer to the startup file (startup_stm32l0xx.s).                    */
 /******************************************************************************/
 
-/* USER CODE BEGIN 1 */
+/**
+  * @brief This function handles EXTI line 0 and line 1 interrupts.
+  */
+void EXTI0_1_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI0_1_IRQn 0 */
 
+  /* USER CODE END EXTI0_1_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(IRQ_NRF24_Pin);
+  /* USER CODE BEGIN EXTI0_1_IRQn 1 */
+
+  /* USER CODE END EXTI0_1_IRQn 1 */
+}
+
+/**
+  * @brief This function handles EXTI line 2 and line 3 interrupts.
+  */
+void EXTI2_3_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI2_3_IRQn 0 */
+
+  /* USER CODE END EXTI2_3_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(RGHT_BUT_Pin);
+  /* USER CODE BEGIN EXTI2_3_IRQn 1 */
+
+  /* USER CODE END EXTI2_3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles EXTI line 4 to 15 interrupts.
+  */
+void EXTI4_15_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI4_15_IRQn 0 */
+
+  /* USER CODE END EXTI4_15_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(MIDL_BUT_Pin);
+  HAL_GPIO_EXTI_IRQHandler(LEFT_BUT_Pin);
+  HAL_GPIO_EXTI_IRQHandler(CHRG_Pin);
+  HAL_GPIO_EXTI_IRQHandler(STDBY_Pin);
+  /* USER CODE BEGIN EXTI4_15_IRQn 1 */
+
+  /* USER CODE END EXTI4_15_IRQn 1 */
+}
+
+/* USER CODE BEGIN 1 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	switch(GPIO_Pin){
+
+		case(IRQ_NRF24_Pin):
+		if (EXTI_F_R_EDGE(IRQ_NRF24_GPIO_Port, IRQ_NRF24_Pin)){
+
+		}
+		else{
+
+		}
+				break;
+
+		case(LEFT_BUT_Pin):
+		if (EXTI_F_R_EDGE(LEFT_BUT_GPIO_Port, LEFT_BUT_Pin)){
+					states &= ~LEFT_BUT;
+				}
+				else{
+					states |= LEFT_BUT;
+				}
+		break;
+
+		case(MIDL_BUT_Pin):
+		if (EXTI_F_R_EDGE(MIDL_BUT_GPIO_Port, MIDL_BUT_Pin)){
+					states |= MIDL_BUT;
+				}
+				else{
+					states |= MIDL_BUT;
+				}
+		break;
+
+		case(RGHT_BUT_Pin):
+		if (EXTI_F_R_EDGE(RGHT_BUT_GPIO_Port, RGHT_BUT_Pin)){
+					states |= RGHT_BUT;
+				}
+				else{
+					states |= RGHT_BUT;
+				}
+		break;
+
+		case(CHRG_Pin):
+		if (EXTI_F_R_EDGE(CHRG_GPIO_Port, CHRG_Pin)){
+
+				}
+				else{
+
+				}
+		break;
+
+		case(STDBY_Pin):
+		if (EXTI_F_R_EDGE(STDBY_GPIO_Port, STDBY_Pin)){
+
+				}
+				else{
+
+				}
+		break;
+
+
+	}
+
+
+}
 /* USER CODE END 1 */

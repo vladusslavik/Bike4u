@@ -26,5 +26,6 @@
 "./Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_spi.o"
 "./Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart.o"
 "./Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart_ex.o"
+"./Libs/Bike4u_control/control.o"
 "./Libs/NRF24/NRF24.o"
 "./Libs/ST7789/st7789v3.o"

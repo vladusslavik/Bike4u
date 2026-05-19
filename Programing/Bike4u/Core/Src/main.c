@@ -21,8 +21,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "control.h"
+
 #include "NRF24.h"
 #include "st7789v3.h"
+
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,8 +57,13 @@ UART_HandleTypeDef huart2;
 
 
 
-uint8_t r = 0, g = 0, b = 0;
+uint8_t r = 0, g = 50, b = 30;
 uint16_t x, y;
+uint8_t brgh = 99;
+
+uint32_t states;	// 0 - Left But, 1 - Midl but, 2 - Right but
+
+uint8_t slp = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -128,7 +137,23 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  TIM_SET_COMPARE_BRGH(TIM2, brgh);
+
+	  if(slp == 1){
+		  ST7789_Sleep_In();
+		  slp = 0;
+
+	  }
+
+	  if(slp == 2){
+
+		  ST7789_Sleep_Out();
+		 slp = 0;
+	  }
+	//  TIM2->CCR1 = pwm;
 //	  SetPixel(x, y, 0, 60, 0);
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -448,11 +473,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : CNTR_BUT_Pin CHRG_Pin STDBY_Pin */
-  GPIO_InitStruct.Pin = CNTR_BUT_Pin|CHRG_Pin|STDBY_Pin;
+  /*Configure GPIO pins : MIDL_BUT_Pin CHRG_Pin STDBY_Pin */
+  GPIO_InitStruct.Pin = MIDL_BUT_Pin|CHRG_Pin|STDBY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI2_3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI2_3_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI4_15_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_15_IRQn);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 

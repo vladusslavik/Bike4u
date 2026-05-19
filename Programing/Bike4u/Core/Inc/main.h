@@ -59,6 +59,7 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define IRQ_NRF24_Pin GPIO_PIN_0
 #define IRQ_NRF24_GPIO_Port GPIOA
+#define IRQ_NRF24_EXTI_IRQn EXTI0_1_IRQn
 #define BAT_Pin GPIO_PIN_1
 #define BAT_GPIO_Port GPIOA
 #define CS_NRF_Pin GPIO_PIN_0
@@ -75,16 +76,37 @@ void Error_Handler(void);
 #define BLK_GPIO_Port GPIOA
 #define RGHT_BUT_Pin GPIO_PIN_3
 #define RGHT_BUT_GPIO_Port GPIOB
-#define CNTR_BUT_Pin GPIO_PIN_4
-#define CNTR_BUT_GPIO_Port GPIOB
+#define RGHT_BUT_EXTI_IRQn EXTI2_3_IRQn
+#define MIDL_BUT_Pin GPIO_PIN_4
+#define MIDL_BUT_GPIO_Port GPIOB
+#define MIDL_BUT_EXTI_IRQn EXTI4_15_IRQn
 #define LEFT_BUT_Pin GPIO_PIN_5
 #define LEFT_BUT_GPIO_Port GPIOB
+#define LEFT_BUT_EXTI_IRQn EXTI4_15_IRQn
 #define CHRG_Pin GPIO_PIN_6
 #define CHRG_GPIO_Port GPIOB
+#define CHRG_EXTI_IRQn EXTI4_15_IRQn
 #define STDBY_Pin GPIO_PIN_7
 #define STDBY_GPIO_Port GPIOB
+#define STDBY_EXTI_IRQn EXTI4_15_IRQn
 
 /* USER CODE BEGIN Private defines */
+
+#define LEFT_BUT		(1 << 0)
+#define RGHT_BUT		(2 << 0)
+#define MIDL_BUT		(3 << 0)
+
+#define CHRG			(4 << 0)
+#define STDBY			(5 << 0)
+
+
+
+
+
+#define TIM_SET_COMPARE_BRGH(timer, value) \
+		((timer)->CCR1 = (value))
+
+#define EXTI_F_R_EDGE(port,pin)		((port)->IDR & (pin))
 
 /* USER CODE END Private defines */
 

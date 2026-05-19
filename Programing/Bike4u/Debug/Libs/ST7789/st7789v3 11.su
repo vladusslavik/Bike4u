@@ -1,0 +1,17 @@
+../Drivers/CMSIS/Include/core_cm0plus.h:741:22:__NVIC_EnableIRQ	16	static
+../Libs/ST7789/st7789v3.c:18:6:Init_BLK_PWM	8	static
+../Libs/ST7789/st7789v3.c:30:6:EnableTransmit	16	static
+../Libs/ST7789/st7789v3.c:48:6:WriteCmd	16	static
+../Libs/ST7789/st7789v3.c:61:6:WriteParameters	16	static
+../Libs/ST7789/st7789v3.c:98:6:InitDMA	8	static
+../Libs/ST7789/st7789v3.c:138:6:InitST7789V3	32	static
+../Libs/ST7789/st7789v3.c:205:6:SetPixel	40	static
+../Libs/ST7789/st7789v3.c:249:6:FillScreen	40	static
+../Libs/ST7789/st7789v3.c:290:6:SetBrighteness	32	static
+../Libs/ST7789/st7789v3.c:305:6:DrawPicture	48	static
+../Libs/ST7789/st7789v3.c:342:6:ST7789_SetScrollArea	32	static
+../Libs/ST7789/st7789v3.c:353:6:ST7789_SetScrollAddress	24	static
+../Libs/ST7789/st7789v3.c:361:6:DrawChar	56	static
+../Libs/ST7789/st7789v3.c:380:6:DrawString	40	static
+../Libs/ST7789/st7789v3.c:395:6:DataAccessControl	16	static
+../Libs/ST7789/st7789v3.c:402:6:DMA1_Channel2_3_IRQHandler	8	static

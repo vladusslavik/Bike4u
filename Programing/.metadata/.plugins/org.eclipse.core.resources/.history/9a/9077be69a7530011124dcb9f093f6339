@@ -1,0 +1,118 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.h
+  * @brief          : Header for main.c file.
+  *                   This file contains the common defines of the application.
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __MAIN_H
+#define __MAIN_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* Includes ------------------------------------------------------------------*/
+#include "stm32l0xx_hal.h"
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
+/* Exported types ------------------------------------------------------------*/
+/* USER CODE BEGIN ET */
+
+/* USER CODE END ET */
+
+/* Exported constants --------------------------------------------------------*/
+/* USER CODE BEGIN EC */
+
+/* USER CODE END EC */
+
+/* Exported macro ------------------------------------------------------------*/
+/* USER CODE BEGIN EM */
+
+/* USER CODE END EM */
+
+/* Exported functions prototypes ---------------------------------------------*/
+void Error_Handler(void);
+
+/* USER CODE BEGIN EFP */
+
+/* USER CODE END EFP */
+
+/* Private defines -----------------------------------------------------------*/
+#define IRQ_NRF24_Pin GPIO_PIN_0
+#define IRQ_NRF24_GPIO_Port GPIOA
+#define IRQ_NRF24_EXTI_IRQn EXTI0_1_IRQn
+#define BAT_Pin GPIO_PIN_1
+#define BAT_GPIO_Port GPIOA
+#define CS_NRF_Pin GPIO_PIN_0
+#define CS_NRF_GPIO_Port GPIOB
+#define CE_NRF_Pin GPIO_PIN_1
+#define CE_NRF_GPIO_Port GPIOB
+#define D_C_Pin GPIO_PIN_8
+#define D_C_GPIO_Port GPIOA
+#define CS_ST7789_Pin GPIO_PIN_11
+#define CS_ST7789_GPIO_Port GPIOA
+#define CS_W25_Pin GPIO_PIN_12
+#define CS_W25_GPIO_Port GPIOA
+#define BLK_Pin GPIO_PIN_15
+#define BLK_GPIO_Port GPIOA
+#define RGHT_BUT_Pin GPIO_PIN_3
+#define RGHT_BUT_GPIO_Port GPIOB
+#define RGHT_BUT_EXTI_IRQn EXTI2_3_IRQn
+#define MIDL_BUT_Pin GPIO_PIN_4
+#define MIDL_BUT_GPIO_Port GPIOB
+#define MIDL_BUT_EXTI_IRQn EXTI4_15_IRQn
+#define LEFT_BUT_Pin GPIO_PIN_5
+#define LEFT_BUT_GPIO_Port GPIOB
+#define LEFT_BUT_EXTI_IRQn EXTI4_15_IRQn
+#define CHRG_Pin GPIO_PIN_6
+#define CHRG_GPIO_Port GPIOB
+#define CHRG_EXTI_IRQn EXTI4_15_IRQn
+#define STDBY_Pin GPIO_PIN_7
+#define STDBY_GPIO_Port GPIOB
+#define STDBY_EXTI_IRQn EXTI4_15_IRQn
+
+/* USER CODE BEGIN Private defines */
+
+#define LEFT_BUT		(1 << 0)
+#define RGHT_BUT		(2 << 0)
+#define MIDL_BUT		(3 << 0)
+
+#define CHRG			(4 << 0)
+#define STDBY			(5 << 0)
+
+
+
+
+
+#define TIM_SET_COMPARE(timer, ch, value) \
+		((timer)->CCR[(ch) - 1] = (value))
+
+#define EXTI_F_R_EDGE(port,pin)	\
+		((port)->IDR & (1 << pin))
+
+/* USER CODE END Private defines */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __MAIN_H */

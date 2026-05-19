@@ -92,3 +92,5 @@ void ST7789_SetScrollArea(uint16_t tfa, uint16_t vsa, uint16_t bfa);
 void ST7789_SetScrollAddress(uint16_t vsp);
 void DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size);
 void DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, uint8_t size);
+void ST7789_Sleep_In();
+void ST7789_Sleep_Out();

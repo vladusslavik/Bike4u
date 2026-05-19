@@ -11,6 +11,7 @@ RM := rm -rf
 -include sources.mk
 -include Libs/ST7789/subdir.mk
 -include Libs/NRF24/subdir.mk
+-include Libs/Bike4u_control/subdir.mk
 -include Drivers/STM32L0xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
