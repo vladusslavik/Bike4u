@@ -11,6 +11,8 @@ uint16_t WIDTH = 240 - 1;
 uint16_t HEIGHT = 280 - 1;
 
 DMA_Actions current_action;
+
+uint8_t buf_screen[BUFFER_SCREEN];
 //volatile uint8_t actions = 0b00000000; // 0  - FillScreen
 //
 //#define FillSCRN		(1 << 0)
@@ -272,13 +274,18 @@ void FillScreen(uint8_t red, uint8_t green, uint8_t blue)
 {
 	//actions |= FillSCRN;
 
-    uint8_t cmd;
+//    uint8_t cmd;
     data[0] = (red > 63) ? 63 : red;
     data[1] = (green > 63) ? 63 : green;
     data[2] = (blue > 63) ? 63 : blue;
 
-    cmd = CASET;
-    WriteCmd(cmd);
+    data[0] = (data[0] << 2);
+    data[1] = (data[1] << 2);
+    data[2] = (data[2] << 2);
+
+
+//    cmd = CASET;
+    WriteCmd(CASET);
     uint8_t caset[4] = {
     		(0x00 + X_OFFSET) >> 8,
 			(0x00 + X_OFFSET),
@@ -287,8 +294,8 @@ void FillScreen(uint8_t red, uint8_t green, uint8_t blue)
     };
     WriteParameters(caset, 4);
 
-    cmd = RASET;
-    WriteCmd(cmd);
+//    cmd = RASET;
+    WriteCmd(RASET);
 
     uint8_t raset[4] = {
             (Y_OFFSET >> 8), 		// YS high byte
@@ -298,15 +305,57 @@ void FillScreen(uint8_t red, uint8_t green, uint8_t blue)
         };
     WriteParameters(raset, 4);
 
-    cmd = RAMWR;
-    WriteCmd(cmd);
+//    cmd = RAMWR;
+    WriteCmd(RAMWR);
 
-    pixels = 67200;
+    pixels = REMAINDER;
     while(SPI1->SR & SPI_SR_BSY);
 
     current_action = FillScrn;
+/////
+//    CS_LOW;
+//    DCX_DATA;
+//    while(pixels--){
+//    	//for(uint8_t i = 0; i < 3; i++){
+//    	//while(SPI1->SR & SPI_SR_BSY);
+//    	//SPI1->CR1 |= SPI_CR1_SPE;
+//    	SPI1->DR = data[0];
+//    	SPI1->DR = data[1];
+//    	SPI1->DR = data[2];
+//    	//}
+//    	//pixels--;
+//
+//    }
+//    while(!(SPI1->SR & SPI_SR_TXE));
+//    while(SPI1->SR & SPI_SR_BSY);
+//    CS_HIGH;
+/////
 
-    EnableTransmit(3, data);
+    ////
+    for(uint16_t i = 0; i < 300; i++){
+    	buf_screen[3*i+0] = data[0];
+    	buf_screen[3*i+1] = data[1];
+    	buf_screen[3*i+2] = data[2];
+    }
+
+    EnableTransmit(BUFFER_SCREEN, buf_screen);
+
+
+    ////
+
+    //EnableTransmit(3, data);
+
+}
+
+void ST7789_FillRectangle(uint16_t x_s, uint16_t y_s, uint16_t x_e, uint16_t y_e, uint8_t *color){
+
+for(uint16_t x = x_s; x < x_e; x++){
+		for(uint16_t y = y_s; y < y_e; y++){
+
+		SetPixel(x, y, color[0], color[1], color[2]);
+
+		}
+}
 
 }
 void SetBrighteness(uint8_t brightness){
@@ -380,7 +429,7 @@ void ST7789_SetScrollAddress(uint16_t vsp) {
     WriteParameters(data, 2);
 }
 
-void DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size){
+void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size){
 //
 	uint8_t rows = ROWS;
 	uint8_t colm = COLUMNS;
@@ -399,20 +448,21 @@ void DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size){
 
 }
 
-void DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, uint8_t size){
+void ST7789_DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, uint8_t size){
 
 	while(*str){
 
 	if(x + (COLUMNS*size) > WIDTH)
 		break;
 
-	DrawChar(x, y, (uint8_t)*str, color, size);
+	ST7789_DrawChar(x, y, (uint8_t)*str, color, size);
 
 	x += COLUMNS*size + (COLUMNS*size)/16;
 	str++;
 	}
 
 }
+
 
 void ST7789_Sleep_In(){
 	CS_LOW;
@@ -450,31 +500,28 @@ void DMA1_Channel2_3_IRQHandler(void){
 
 	        						break;
 
+		case (FillScrn):
+			DMA1_Channel3->CCR &= ~DMA_CCR_EN;
+			while (DMA1_Channel3->CCR & DMA_CCR_EN);
 
-	        		case(FillScrn):
-	       		DMA1_Channel3->CCR &= ~DMA_CCR_EN;
-	        				while (DMA1_Channel3->CCR & DMA_CCR_EN);
+			if (pixels) {
+				pixels--;
+				DMA1->IFCR = DMA_IFCR_CGIF3 |
+				DMA_IFCR_CTCIF3 |
+				DMA_IFCR_CHTIF3 |
+				DMA_IFCR_CTEIF3;
+				EnableTransmit(BUFFER_SCREEN, buf_screen);
 
+			} else {
 
-	        				if(pixels == 0 || pixels > 67200){
+				CS_HIGH;
+				current_action = WRTParameters;
 
-	        					CS_HIGH;
-	        					current_action = WRTParameters;
+			}
+			break;
 
-	        				}
-	        				else{
-	        					pixels--;
-
-	        					DMA1->IFCR = DMA_IFCR_CGIF3 |
-	        							                 DMA_IFCR_CTCIF3 |
-	        							                 DMA_IFCR_CHTIF3 |
-	        							                 DMA_IFCR_CTEIF3;
-	        					EnableTransmit(3, data);
-
-	        				}
-	        				break;
-
-	        		}
+		}
+	        return;
 	    }
 
 	    if (DMA1->ISR & DMA_ISR_TEIF3)
@@ -484,81 +531,3 @@ void DMA1_Channel2_3_IRQHandler(void){
 
 }
 
-//void DMA2_Stream2_IRQHandler(void){
-//
-//	if(DMA2->LISR & DMA_LISR_TCIF2){
-//
-//		DMA2_Stream2->CR &= ~DMA_SxCR_EN;
-//		while (DMA2_Stream2->CR & DMA_SxCR_EN);
-//
-//		switch(current_action){
-//		case(WRTParameters):
-//
-//						break;
-//
-//
-//		case(FillScrn):
-////
-////		static uint8_t buffer = 0;
-////
-////		if(buffer ==  4){
-////
-////			CS_HIGH;
-////			current_action = WRTParameters;
-////			buffer = 0;
-////			//DMA2_Stream2->CR &= ~DMA_SxCR_DBM;
-////			DMA2_Stream2->CR &= ~DMA_SxCR_CIRC;
-////
-////		}
-////		else if(buffer ==  3){
-////
-////
-////				DMA2->LIFCR = DMA_LIFCR_CTCIF2 | DMA_LIFCR_CHTIF2
-////						| DMA_LIFCR_CTEIF2 | DMA_LIFCR_CFEIF2;
-////				EnableTransmit(4995, data);
-////				buffer++;
-////				return;
-////
-////		}
-////		else{
-////			EnableTransmit(0xFFFF, data);
-////		}
-//
-//
-//		DMA2_Stream2->CR &= ~DMA_SxCR_EN;
-//				while (DMA2_Stream2->CR & DMA_SxCR_EN);
-//
-//
-//				if(pixels == 0 || pixels > 67200){
-//
-//					CS_HIGH;
-//					current_action = WRTParameters;
-//
-//				}
-//				else{
-//					pixels--;
-//					DMA2->LIFCR = DMA_LIFCR_CTCIF2
-//						            | DMA_LIFCR_CHTIF2
-//						            | DMA_LIFCR_CTEIF2
-//						            | DMA_LIFCR_CFEIF2;
-//					EnableTransmit(3, data);
-//
-//				}
-//				break;
-//
-//		}
-//
-//
-//	}
-//
-//	DMA2->LIFCR = DMA_LIFCR_CTCIF2
-//	            | DMA_LIFCR_CHTIF2
-//	            | DMA_LIFCR_CTEIF2
-//	            | DMA_LIFCR_CFEIF2;
-//}
-
-//void SPI1_IRQHandler(void){
-//
-//	SPI1->SR &= ~SPI_SR_BSY;
-//
-//}

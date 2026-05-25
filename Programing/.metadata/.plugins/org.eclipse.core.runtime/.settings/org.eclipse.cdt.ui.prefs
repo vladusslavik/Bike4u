@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 markOccurrences=false
 scalability.numberOfLines=50000
+sourceHoverBackgroundColor=236,235,236
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true

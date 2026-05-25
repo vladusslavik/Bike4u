@@ -20,6 +20,11 @@ extern SPI_HandleTypeDef hspi1;
 
 //#define WIDTH  240
 //#define HEIGHT 280
+#define		PIXELS			67200
+#define		BYTES_FOR_PIXEL	3
+
+#define		BUFFER_SCREEN	900
+#define		REMAINDER		(PIXELS * BYTES_FOR_PIXEL) / BUFFER_SCREEN
 
 //#define X_OFFSET	0
 //#define Y_OFFSET	20
@@ -90,7 +95,8 @@ void SetBrighteness(uint8_t brightness);
 void DrawPicture(const uint8_t* data);
 void ST7789_SetScrollArea(uint16_t tfa, uint16_t vsa, uint16_t bfa);
 void ST7789_SetScrollAddress(uint16_t vsp);
-void DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size);
-void DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, uint8_t size);
+void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size);
+void ST7789_DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, uint8_t size);
+void ST7789_FillRectangle(uint16_t x_s, uint16_t y_s, uint16_t x_e, uint16_t y_e, uint8_t *color);
 void ST7789_Sleep_In();
 void ST7789_Sleep_Out();

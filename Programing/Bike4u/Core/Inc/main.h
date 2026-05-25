@@ -92,6 +92,14 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 
+#define VREFINT_CAL_ADDR   	((uint16_t*)0x1FF80078) // Калібрувальне значення TS_CAL_VREF
+#define VREFINT_CAL_VCC    	3.0f                    // Напруга, при якій фабрика міряла цей кал. (3.0В)
+#define VREFINT_CAL_COEF   	((float)(*VREFINT_CAL_ADDR) * VREFINT_CAL_VCC)
+#define	BAT_PRESC			2
+
+#define EDGE_BAT_LOW		3.3
+#define	EDGE_BAT_HIGH		4.2
+
 #define LEFT_BUT		(1 << 0)
 #define RGHT_BUT		(2 << 0)
 #define MIDL_BUT		(3 << 0)

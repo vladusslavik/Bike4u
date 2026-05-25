@@ -1,4 +1,4 @@
-20:21:52 **** Build of configuration Debug for project fff ****
+21:07:51 **** Build of configuration Debug for project fff ****
 make -j7 all 
 arm-none-eabi-size  fff.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  fff.elf
 Finished building: default.size.stdout
  
 
-20:21:53 Build Finished. 0 errors, 0 warnings. (took 487ms)
+21:07:52 Build Finished. 0 errors, 0 warnings. (took 260ms)
 

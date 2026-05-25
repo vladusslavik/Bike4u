@@ -1,4 +1,4 @@
-20:21:44 **** Build of configuration Debug for project Mosfet_p ****
+21:07:45 **** Build of configuration Debug for project Mosfet_p ****
 make -j7 all 
 arm-none-eabi-size  Mosfet_p.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  Mosfet_p.elf
 Finished building: default.size.stdout
  
 
-20:21:45 Build Finished. 0 errors, 0 warnings. (took 465ms)
+21:07:45 Build Finished. 0 errors, 0 warnings. (took 339ms)
 

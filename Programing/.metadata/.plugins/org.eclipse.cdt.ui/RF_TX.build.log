@@ -1,4 +1,4 @@
-20:21:48 **** Build of configuration Debug for project RF_TX ****
+21:07:49 **** Build of configuration Debug for project RF_TX ****
 make -j7 all 
 arm-none-eabi-size  RF_TX.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  RF_TX.elf
 Finished building: default.size.stdout
  
 
-20:21:49 Build Finished. 0 errors, 0 warnings. (took 527ms)
+21:07:49 Build Finished. 0 errors, 0 warnings. (took 259ms)
 

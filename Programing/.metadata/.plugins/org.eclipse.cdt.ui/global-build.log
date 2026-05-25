@@ -1,44 +1,56 @@
-21:11:14 **** Incremental Build of configuration Debug for project Bike4u ****
+21:28:01 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/ST7789/st7789v3.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/ST7789/st7789v3.d" -MT"Libs/ST7789/st7789v3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/ST7789/st7789v3.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  34124	    108	   2556	  36788	   8fb4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+22:11:36 **** Incremental Build of configuration Debug for project Bike4u ****
 make -j7 all 
 arm-none-eabi-gcc "../Libs/ST7789/st7789v3.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/ST7789/st7789v3.d" -MT"Libs/ST7789/st7789v3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/ST7789/st7789v3.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:141:14: error: 'slp' undeclared (first use in this function)
-  141 |           if(slp == 1){
-      |              ^~~
-../Core/Src/main.c:141:14: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-make: *** Waiting for unfinished jobs....
-"make -j7 all" terminated with exit code 2. Build might be incomplete.
-21:11:33 **** Incremental Build of configuration Debug for project Bike4u ****
-make -j7 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:199:35: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  199 |                           sprintf(buf,"%d%",bat_percent);
+      |                                   ^~~
+      |                                   |
+      |                                   uint8_t * {aka unsigned char *}
+In file included from /Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24/NRF24.h:8,
+                 from ../Core/Src/main.c:26:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Core/Src/main.c:199:42: warning: spurious trailing '%' in format [-Wformat=]
+  199 |                           sprintf(buf,"%d%",bat_percent);
+      |                                          ^
+../Core/Src/main.c:200:52: warning: pointer targets in passing argument 3 of 'ST7789_DrawString' differ in signedness [-Wpointer-sign]
+  200 |                         ST7789_DrawString(200, 40, buf, color, 2);
+      |                                                    ^~~
+      |                                                    |
+      |                                                    uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:27:
+/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789/st7789v3.h:99:60: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   99 | void ST7789_DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, uint8_t size);
+      |                                                ~~~~~~~~~~~~^~~
 arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Bike4u.elf
  
 arm-none-eabi-size  Bike4u.elf 
 arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
    text	   data	    bss	    dec	    hex	filename
-  17700	     24	   1952	  19676	   4cdc	Bike4u.elf
+  34108	    108	   3460	  37676	   932c	Bike4u.elf
 Finished building: default.size.stdout
  
 Finished building: Bike4u.list
  
-21:12:06 **** Incremental Build of configuration Debug for project Bike4u ****
-make -j7 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Bike4u.elf
- 
-arm-none-eabi-size  Bike4u.elf 
-arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
-   text	   data	    bss	    dec	    hex	filename
-  17700	     24	   1952	  19676	   4cdc	Bike4u.elf
-Finished building: default.size.stdout
- 
-Finished building: Bike4u.list
- 
-21:13:14 **** Incremental Build of configuration Debug for project Bike4u ****
+22:13:09 **** Incremental Build of configuration Debug for project Bike4u ****
 make -j7 all 
 arm-none-eabi-gcc "../Libs/ST7789/st7789v3.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/ST7789/st7789v3.d" -MT"Libs/ST7789/st7789v3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/ST7789/st7789v3.o"
 arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -47,8 +59,29 @@ Finished building target: Bike4u.elf
 arm-none-eabi-size  Bike4u.elf 
 arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
    text	   data	    bss	    dec	    hex	filename
-  17672	     24	   1952	  19648	   4cc0	Bike4u.elf
+  34112	    108	   3460	  37680	   9330	Bike4u.elf
 Finished building: default.size.stdout
  
 Finished building: Bike4u.list
+ 
+22:27:35 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/ST7789/st7789v3.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/ST7789/st7789v3.d" -MT"Libs/ST7789/st7789v3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/ST7789/st7789v3.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  34112	    108	   3460	  37680	   9330	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+22:27:51 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  34112	    108	   3460	  37680	   9330	Bike4u.elf
+Finished building: default.size.stdout
  

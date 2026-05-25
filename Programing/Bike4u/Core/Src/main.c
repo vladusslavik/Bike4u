@@ -46,12 +46,16 @@
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc;
+DMA_HandleTypeDef hdma_adc;
 
 RTC_HandleTypeDef hrtc;
 
 SPI_HandleTypeDef hspi1;
 
+TIM_HandleTypeDef htim21;
+
 UART_HandleTypeDef huart2;
+DMA_HandleTypeDef hdma_usart2_rx;
 
 /* USER CODE BEGIN PV */
 
@@ -64,15 +68,25 @@ uint8_t brgh = 99;
 uint32_t states;	// 0 - Left But, 1 - Midl but, 2 - Right but
 
 uint8_t slp = 0;
+
+uint8_t buf_ble[50];
+uint8_t ble = 0;
+
+uint16_t adc[2] = {0};
+uint8_t bat_percent;
+
+uint16_t del_bat = 1000;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_ADC_Init(void);
 static void MX_RTC_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM21_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -111,24 +125,27 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC_Init();
   MX_RTC_Init();
   MX_SPI1_Init();
   MX_USART2_UART_Init();
+  MX_TIM21_Init();
   /* USER CODE BEGIN 2 */
-//HAL_GPIO_WritePin(BLK_GPIO_Port, BLK_Pin, 1);
-//HAL_GPIO_WritePin(BLK_GPIO_Port, BLK_Pin, 0);
-//HAL_GPIO_WritePin(BLK_GPIO_Port, BLK_Pin, 1);
+  HAL_ADCEx_Calibration_Start(&hadc, ADC_SINGLE_ENDED);
+  HAL_ADCEx_EnableVREFINT();
+
+  HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc, 2);
+
+
+
  // NRF24_ini();
   InitST7789V3(X_Y_Exchange_X_Mirror);
-
-//  rotation Data_Control = X_Y_Exchange;
-//  DataAccessControl(X_Y_Exchange_X_Mirror);
+  HAL_UART_Receive_DMA(&huart2, buf_ble, 50);
 
   uint8_t color[3] = {0,60,0};
-  //DrawChar(100, 100, 'x', color, 7);
   FillScreen(r, g, b);
-  DrawString(5, 100, "Dasha+Vlad", color, 3);
+  ST7789_DrawString(50, 100, "Bike4u", color, 5);
 
 
   /* USER CODE END 2 */
@@ -150,10 +167,38 @@ int main(void)
 		  ST7789_Sleep_Out();
 		 slp = 0;
 	  }
-	//  TIM2->CCR1 = pwm;
-//	  SetPixel(x, y, 0, 60, 0);
+	  static uint32_t timing;
+	  if(uwTick - timing > 40){
+		  timing = uwTick;
 
+		  if(states & LEFT_BUT)
+			  brgh--;
 
+		  if(states & RGHT_BUT)
+			  brgh++;
+
+		  if(brgh > 99)
+			  brgh = 99;
+		  else if(brgh < 1)
+			  brgh = 1;
+	  }
+	  if(ble){
+		  uint8_t buf[] = "Hello";
+		  HAL_UART_Transmit(&huart2, buf, sizeof(buf), 100);
+		  ble = 0;
+	  }
+
+	  static uint32_t timing_bat;
+	  	  if(uwTick - timing_bat > del_bat){
+	  		  timing_bat = uwTick;
+	  		HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc, 2);
+	  		uint8_t col[3] = {r, g, b};
+	  		ST7789_FillRectangle(200, 40, 200 + 4*COLUMNS*2, 40 + ROWS*2, col);
+	  		  uint8_t buf[4];
+
+	  		  sprintf(buf,"%d%",bat_percent);
+	  		ST7789_DrawString(200, 40, buf, color, 2);
+	  	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -239,17 +284,20 @@ static void MX_ADC_Init(void)
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
   */
   hadc.Instance = ADC1;
-  hadc.Init.OversamplingMode = DISABLE;
+  hadc.Init.OversamplingMode = ENABLE;
+  hadc.Init.Oversample.Ratio = ADC_OVERSAMPLING_RATIO_16;
+  hadc.Init.Oversample.RightBitShift = ADC_RIGHTBITSHIFT_4;
+  hadc.Init.Oversample.TriggeredMode = ADC_TRIGGEREDMODE_SINGLE_TRIGGER;
   hadc.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
   hadc.Init.Resolution = ADC_RESOLUTION_12B;
-  hadc.Init.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+  hadc.Init.SamplingTime = ADC_SAMPLETIME_160CYCLES_5;
   hadc.Init.ScanConvMode = ADC_SCAN_DIRECTION_FORWARD;
   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc.Init.ContinuousConvMode = DISABLE;
   hadc.Init.DiscontinuousConvMode = DISABLE;
   hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc.Init.DMAContinuousRequests = DISABLE;
+  hadc.Init.DMAContinuousRequests = ENABLE;
   hadc.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   hadc.Init.Overrun = ADC_OVR_DATA_PRESERVED;
   hadc.Init.LowPowerAutoWait = DISABLE;
@@ -264,6 +312,14 @@ static void MX_ADC_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel to be converted.
+  */
+  sConfig.Channel = ADC_CHANNEL_VREFINT;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -377,6 +433,64 @@ static void MX_SPI1_Init(void)
 }
 
 /**
+  * @brief TIM21 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM21_Init(void)
+{
+
+  /* USER CODE BEGIN TIM21_Init 0 */
+
+  /* USER CODE END TIM21_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM21_Init 1 */
+
+  /* USER CODE END TIM21_Init 1 */
+  htim21.Instance = TIM21;
+  htim21.Init.Prescaler = 31999;
+  htim21.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim21.Init.Period = 999;
+  htim21.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim21.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim21) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim21, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_OC_Init(&htim21) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_ENABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim21, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_TIMING;
+  sConfigOC.Pulse = 499;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_OC_ConfigChannel(&htim21, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM21_Init 2 */
+
+  /* USER CODE END TIM21_Init 2 */
+
+}
+
+/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -408,6 +522,25 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE BEGIN USART2_Init 2 */
 
   /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+  /* DMA1_Channel4_5_6_7_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel4_5_6_7_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel4_5_6_7_IRQn);
 
 }
 
@@ -467,14 +600,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(BLK_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : RGHT_BUT_Pin LEFT_BUT_Pin */
-  GPIO_InitStruct.Pin = RGHT_BUT_Pin|LEFT_BUT_Pin;
+  /*Configure GPIO pins : RGHT_BUT_Pin MIDL_BUT_Pin LEFT_BUT_Pin */
+  GPIO_InitStruct.Pin = RGHT_BUT_Pin|MIDL_BUT_Pin|LEFT_BUT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : MIDL_BUT_Pin CHRG_Pin STDBY_Pin */
-  GPIO_InitStruct.Pin = MIDL_BUT_Pin|CHRG_Pin|STDBY_Pin;
+  /*Configure GPIO pins : CHRG_Pin STDBY_Pin */
+  GPIO_InitStruct.Pin = CHRG_Pin|STDBY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -490,7 +623,10 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_EnableIRQ(EXTI4_15_IRQn);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
-
+  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
