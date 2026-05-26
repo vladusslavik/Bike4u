@@ -193,7 +193,7 @@ int main(void)
 	  		  timing_bat = uwTick;
 	  		HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc, 2);
 	  		uint8_t col[3] = {r, g, b};
-	  	//	ST7789_FillRectangle(200, 40, 200 + 4*COLUMNS*2, 40 + ROWS*2, col);
+	  		ST7789_FillRectangle(200, 40, 200 + 4*COLUMNS*2, 40 + ROWS*2, col);
 	  		  uint8_t buf[4];
 
 	  		  sprintf(buf,"%d%",bat_percent);

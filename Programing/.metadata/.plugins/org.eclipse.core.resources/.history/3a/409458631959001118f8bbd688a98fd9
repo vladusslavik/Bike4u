@@ -503,8 +503,8 @@ void ST7789_DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, 
 	if(x + (COLUMNS*size) > WIDTH)
 		break;
 
-//	DrawChar(x, y, (uint8_t)*str, color, size);
-	ST7789_DrawChar(x, y, (uint8_t)*str, color, size);
+	DrawChar(x, y, (uint8_t)*str, color, size);
+//	ST7789_DrawChar(x, y, (uint8_t)*str, color, size);
 
 	x += COLUMNS*size + (COLUMNS*size)/16;
 	str++;
@@ -564,7 +564,6 @@ void DMA1_Channel2_3_IRQHandler(void){
 				} else {
 
 					CS_HIGH;
-					DCX_CMD;
 					current_action = WRTParameters;
 
 				}

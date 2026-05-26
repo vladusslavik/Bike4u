@@ -443,7 +443,7 @@ void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t si
 	        };
 	    WriteParameters(raset, 4);
 
-	    WriteCmd(RAMWR);
+
 
 	    current_action = WriteChar;
 
@@ -466,6 +466,7 @@ void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t si
 	    		}
 	    	}
 	    	//while(!(SPI1->SR & SPI_SR_TXE));
+	    	WriteCmd(RAMWR);
 	    	while(SPI1->SR & SPI_SR_BSY);
 	    	EnableTransmit(COLUMNS*size*BYTES_FOR_PIXEL, buf_line);
 //	    	while(!(DMA1->ISR & DMA_ISR_TCIF3));
@@ -564,7 +565,6 @@ void DMA1_Channel2_3_IRQHandler(void){
 				} else {
 
 					CS_HIGH;
-					DCX_CMD;
 					current_action = WRTParameters;
 
 				}

@@ -467,7 +467,7 @@ void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t si
 	    	}
 	    	//while(!(SPI1->SR & SPI_SR_TXE));
 	    	while(SPI1->SR & SPI_SR_BSY);
-	    	EnableTransmit(COLUMNS*size*BYTES_FOR_PIXEL, buf_line);
+	    	EnableTransmit(ROWS*COLUMNS*size*BYTES_FOR_PIXEL, buf_line);
 //	    	while(!(DMA1->ISR & DMA_ISR_TCIF3));
 //	    	DMA1->IFCR = DMA_IFCR_CTCIF3;
 	    }
@@ -564,7 +564,6 @@ void DMA1_Channel2_3_IRQHandler(void){
 				} else {
 
 					CS_HIGH;
-					DCX_CMD;
 					current_action = WRTParameters;
 
 				}
