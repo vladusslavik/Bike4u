@@ -12,7 +12,9 @@ uint16_t HEIGHT = 280 - 1;
 
 DMA_Actions current_action;
 
-uint8_t buf_screen[BUFFER_SCREEN];
+uint8_t buf_screen[BUFFER_SCREEN] = {0};
+
+volatile uint8_t buf_line[CHAR_LINE_BUF] = {0};
 //volatile uint8_t actions = 0b00000000; // 0  - FillScreen
 //
 //#define FillSCRN		(1 << 0)
@@ -91,22 +93,10 @@ void WriteParameters(uint8_t *parameters, uint8_t size){
 
 	EnableTransmit(size, parameters);
 //
-//	for(uint8_t i = 0; i < size; i++){
-//
-//		while(!(SPI1->SR & SPI_SR_TXE));
-//		SPI1->DR = parameters[i];
-//
-//	}
-	//while(!(DMA1->ISR & DMA_ISR_TCIF3));
-
-
-
-	// очистити флаг
-	//DMA1->IFCR |= DMA_IFCR_CTCIF3;
-	DMA1->IFCR = DMA_IFCR_CGIF3 |
-		                 DMA_IFCR_CTCIF3 |
-		                 DMA_IFCR_CHTIF3 |
-		                 DMA_IFCR_CTEIF3;
+//	DMA1->IFCR = DMA_IFCR_CGIF3 |
+//		                 DMA_IFCR_CTCIF3 |
+//		                 DMA_IFCR_CHTIF3 |
+//		                 DMA_IFCR_CTEIF3;
 
 
 
@@ -286,11 +276,12 @@ void FillScreen(uint8_t red, uint8_t green, uint8_t blue)
 
 //    cmd = CASET;
     WriteCmd(CASET);
+
     uint8_t caset[4] = {
-    		(0x00 + X_OFFSET) >> 8,
-			(0x00 + X_OFFSET),
-			(WIDTH + X_OFFSET) >> 8,
-			(WIDTH + X_OFFSET)
+    		(0x00 + X_OFFSET) >> 8,		// XS high byte
+			(0x00 + X_OFFSET),			// XS low byte
+			(WIDTH + X_OFFSET) >> 8,	// XE high byte
+			(WIDTH + X_OFFSET)			// XE low byte
     };
     WriteParameters(caset, 4);
 
@@ -428,8 +419,65 @@ void ST7789_SetScrollAddress(uint16_t vsp) {
     data[1] = vsp & 0xFF;
     WriteParameters(data, 2);
 }
-
 void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size){
+
+	uint16_t W = COLUMNS*size + x - 1;
+	uint16_t H = ROWS*size + y - 1;
+
+	    WriteCmd(CASET);
+	    uint8_t caset[4] = {
+	    		(x + X_OFFSET) >> 8,	// XS high byte
+				(x + X_OFFSET),			// XS low byte
+				(W + X_OFFSET) >> 8,	// XE high byte
+				(W + X_OFFSET)			// XE low byte
+	    };
+	    WriteParameters(caset, 4);
+
+	    WriteCmd(RASET);
+
+	    uint8_t raset[4] = {
+	            (y + Y_OFFSET) >> 8, 	// YS high byte
+	            (y + Y_OFFSET),      	// YS low byte
+	            (H + Y_OFFSET) >> 8, 	// YE high byte
+	            (H + Y_OFFSET)       	// YE low byte
+	        };
+	    WriteParameters(raset, 4);
+
+	    WriteCmd(RAMWR);
+
+	    current_action = WriteChar;
+
+	    for(uint8_t i = 0; i < ROWS*size ;i++){
+	    	for(uint8_t b = 0; b < COLUMNS*size ;b++){
+
+	    	uint8_t reverse = 7 - (b / size);
+	    	uint8_t bin = (font_ascii_8x8[(uint8_t)ch][i/size] >> (reverse)) & 1;
+
+	    		if(bin & 1){
+	    			//SetPixel(x+b, y+i, color[0], color[1], color[2]);
+	    			buf_line[3*b+0] = color[0] << 2;
+	    			buf_line[3*b+1] = color[1] << 2;
+	    			buf_line[3*b+2] = color[2] << 2;
+	    		}
+	    		else{
+	    			buf_line[3*b+0] = data[0];
+	    			buf_line[3*b+1] = data[1];
+	    			buf_line[3*b+2] = data[2];			//Background
+	    		}
+	    	}
+	    	//while(!(SPI1->SR & SPI_SR_TXE));
+	    	while(SPI1->SR & SPI_SR_BSY);
+	    	EnableTransmit(ROWS*COLUMNS*size*BYTES_FOR_PIXEL, buf_line);
+//	    	while(!(DMA1->ISR & DMA_ISR_TCIF3));
+//	    	DMA1->IFCR = DMA_IFCR_CTCIF3;
+	    }
+	    while(SPI1->SR & SPI_SR_BSY);
+	    CS_HIGH;
+
+
+
+}
+void DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size){
 //
 	uint8_t rows = ROWS;
 	uint8_t colm = COLUMNS;
@@ -455,6 +503,7 @@ void ST7789_DrawString(uint16_t x, uint16_t y, const char *str, uint8_t *color, 
 	if(x + (COLUMNS*size) > WIDTH)
 		break;
 
+//	DrawChar(x, y, (uint8_t)*str, color, size);
 	ST7789_DrawChar(x, y, (uint8_t)*str, color, size);
 
 	x += COLUMNS*size + (COLUMNS*size)/16;
@@ -495,30 +544,37 @@ void DMA1_Channel2_3_IRQHandler(void){
 	    {
 	        DMA1->IFCR = DMA_IFCR_CTCIF3;
 
-	        switch(current_action){
-	        		case(WRTParameters):
+	    switch(current_action){
+	        case(WRTParameters):
 
-	        						break;
+	        break;
 
-		case (FillScrn):
-			DMA1_Channel3->CCR &= ~DMA_CCR_EN;
-			while (DMA1_Channel3->CCR & DMA_CCR_EN);
+			case (FillScrn):
+				DMA1_Channel3->CCR &= ~DMA_CCR_EN;
+				while (DMA1_Channel3->CCR & DMA_CCR_EN);
 
-			if (pixels) {
-				pixels--;
-				DMA1->IFCR = DMA_IFCR_CGIF3 |
-				DMA_IFCR_CTCIF3 |
-				DMA_IFCR_CHTIF3 |
-				DMA_IFCR_CTEIF3;
-				EnableTransmit(BUFFER_SCREEN, buf_screen);
+				if (pixels) {
+					pixels--;
+					DMA1->IFCR = DMA_IFCR_CGIF3 |
+					DMA_IFCR_CTCIF3 |
+					DMA_IFCR_CHTIF3 |
+					DMA_IFCR_CTEIF3;
+					EnableTransmit(BUFFER_SCREEN, buf_screen);
 
-			} else {
+				} else {
 
-				CS_HIGH;
-				current_action = WRTParameters;
+					CS_HIGH;
+					current_action = WRTParameters;
 
-			}
+				}
 			break;
+
+			case(WriteChar):
+
+
+
+			break;
+
 
 		}
 	        return;

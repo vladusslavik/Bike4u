@@ -3,6 +3,7 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="pixels"/>
 		<item value="data"/>
 		<item value="DrawString"/>
 		<item value="DrawChar"/>
@@ -17,7 +18,6 @@
 		<item value="RES"/>
 		<item value="RES_L"/>
 		<item value="RES_H"/>
-		<item value="RES_Hi"/>
 	</list>
 	<list key="replacehistory">
 		<item value="ST7789_DrawString"/>

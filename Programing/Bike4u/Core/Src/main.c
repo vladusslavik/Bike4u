@@ -145,7 +145,7 @@ int main(void)
 
   uint8_t color[3] = {0,60,0};
   FillScreen(r, g, b);
-  ST7789_DrawString(50, 100, "Bike4u", color, 5);
+  ST7789_DrawString(20, 100, "Bike4u", color, 5);
 
 
   /* USER CODE END 2 */
@@ -192,7 +192,7 @@ int main(void)
 	  	  if(uwTick - timing_bat > del_bat){
 	  		  timing_bat = uwTick;
 	  		HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc, 2);
-	  		uint8_t col[3] = {r, g, b};
+	  		uint8_t col[3] = {63, 0, 0};
 	  		ST7789_FillRectangle(200, 40, 200 + 4*COLUMNS*2, 40 + ROWS*2, col);
 	  		  uint8_t buf[4];
 

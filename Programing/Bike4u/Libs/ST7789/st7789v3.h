@@ -26,6 +26,8 @@ extern SPI_HandleTypeDef hspi1;
 #define		BUFFER_SCREEN	900
 #define		REMAINDER		(PIXELS * BYTES_FOR_PIXEL) / BUFFER_SCREEN
 
+#define		CHAR_LINE_BUF	COLUMNS*MAX_SIZE*BYTES_FOR_PIXEL
+
 //#define X_OFFSET	0
 //#define Y_OFFSET	20
 
@@ -80,7 +82,7 @@ typedef enum{
 }rotation;
 
 typedef enum{
-	WRTParameters, FillScrn
+	WRTParameters, FillScrn,  WriteChar
 
 }DMA_Actions;
 
@@ -93,6 +95,7 @@ void SetPixel(uint16_t x_position, uint16_t y_position,
 		uint8_t red, uint8_t green, uint8_t blue); // rgb per 6 bits(0-63)
 void SetBrighteness(uint8_t brightness);
 void DrawPicture(const uint8_t* data);
+void DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size);
 void ST7789_SetScrollArea(uint16_t tfa, uint16_t vsa, uint16_t bfa);
 void ST7789_SetScrollAddress(uint16_t vsp);
 void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size);

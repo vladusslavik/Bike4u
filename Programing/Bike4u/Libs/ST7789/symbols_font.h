@@ -1,6 +1,8 @@
 #define COLUMNS		8
 #define ROWS		8
 
+#define	MAX_SIZE	5
+
 #define QUANITY_OF_SYBMOLS		26
 
 static const uint8_t font_ascii_8x8[123][8] = {
