@@ -9,6 +9,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="/Users/admin/Desktop/RnD/Vtykalo/Vtykalo/Vtykalo_3.3Ghz_F411CEU6"/>
 			<item value="/Users/admin/Desktop/My Projects/IPS Display st7789v3"/>
 		</list>
 		<section name="SmartImportWizard.dialogBounds">

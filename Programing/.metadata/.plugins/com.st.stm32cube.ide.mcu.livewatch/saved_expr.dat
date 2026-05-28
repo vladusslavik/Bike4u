@@ -1,8 +1,6 @@
 r
 g
 b
-x
-y
-pwm
-brgh
-slp
+ble
+buf_ble
+buf_ble_t
