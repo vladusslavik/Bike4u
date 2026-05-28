@@ -92,6 +92,11 @@ void WriteParameters(uint8_t *parameters, uint8_t size){
 	SPI1->CR1 |= SPI_CR1_SPE;
 
 	EnableTransmit(size, parameters);
+	// Побайтовий вивід координат без залучення фонового DMA
+//	    for(uint8_t i = 0; i < size; i++){
+//	        while(!(SPI1->SR & SPI_SR_TXE));
+//	        SPI1->DR = parameters[i];
+//	    }
 //
 //	DMA1->IFCR = DMA_IFCR_CGIF3 |
 //		                 DMA_IFCR_CTCIF3 |
@@ -424,6 +429,8 @@ void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t si
 	uint16_t W = COLUMNS*size + x - 1;
 	uint16_t H = ROWS*size + y - 1;
 
+	while(DMA1_Channel3->CCR & DMA_CCR_EN);
+
 	    WriteCmd(CASET);
 	    uint8_t caset[4] = {
 	    		(x + X_OFFSET) >> 8,	// XS high byte
@@ -468,8 +475,7 @@ void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t si
 	    	//while(!(SPI1->SR & SPI_SR_TXE));
 	    	while(SPI1->SR & SPI_SR_BSY);
 	    	EnableTransmit(COLUMNS*size*BYTES_FOR_PIXEL, buf_line);
-//	    	while(!(DMA1->ISR & DMA_ISR_TCIF3));
-//	    	DMA1->IFCR = DMA_IFCR_CTCIF3;
+
 	    }
 	    while(SPI1->SR & SPI_SR_BSY);
 	    CS_HIGH;
@@ -478,7 +484,7 @@ void ST7789_DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t si
 
 }
 void DrawChar(uint16_t x, uint16_t y, char ch, uint8_t *color, uint8_t size){
-//
+
 	uint8_t rows = ROWS;
 	uint8_t colm = COLUMNS;
 
@@ -571,7 +577,7 @@ void DMA1_Channel2_3_IRQHandler(void){
 			break;
 
 			case(WriteChar):
-
+				DMA1_Channel3->CCR &= ~DMA_CCR_EN;
 
 
 			break;

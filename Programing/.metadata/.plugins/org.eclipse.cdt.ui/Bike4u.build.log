@@ -1,17 +1,28 @@
-18:48:26 **** Incremental Build of configuration Debug for project Bike4u ****
+12:56:42 **** Incremental Build of configuration Debug for project Bike4u ****
 make -j7 all 
-arm-none-eabi-gcc "../Libs/ST7789/st7789v3.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/ST7789/st7789v3.d" -MT"Libs/ST7789/st7789v3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/ST7789/st7789v3.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:202:27: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  202 |                   sprintf(buf_ble_t, "AT+BLEDISCON\r\n");
+      |                           ^~~~~~~~~
+      |                           |
+      |                           uint8_t * {aka unsigned char *}
+In file included from /Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24/NRF24.h:8,
+                 from ../Core/Src/main.c:26:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
 arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Bike4u.elf
  
 arm-none-eabi-size  Bike4u.elf 
 arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
    text	   data	    bss	    dec	    hex	filename
-  33928	    108	   3580	  37616	   92f0	Bike4u.elf
+  34616	    112	   3648	  38376	   95e8	Bike4u.elf
 Finished building: default.size.stdout
  
 Finished building: Bike4u.list
  
 
-18:48:26 Build Finished. 0 errors, 0 warnings. (took 859ms)
+12:56:44 Build Finished. 0 errors, 1 warnings. (took 1s.149ms)
 

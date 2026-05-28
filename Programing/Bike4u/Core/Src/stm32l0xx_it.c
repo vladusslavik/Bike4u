@@ -42,8 +42,8 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 	extern uint32_t states;
-	extern uint16_t adc[2];
-	extern uint8_t bat_percent;
+//	extern uint16_t adc[2];
+//	extern uint8_t bat_percent;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -310,15 +310,27 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 }
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
-    if(hadc->Instance == ADC1)
-    {
-    	float vdda = VREFINT_CAL_COEF / (float)adc[1];
-    	float battery = (vdda * (float)adc[0])/ 4095.0f;
-    	battery *= BAT_PRESC;
-    	battery = battery * 111 - 366;
-    	bat_percent = battery;
-    }
-}
+//void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+//{
+//    if(hadc->Instance == ADC1)
+//    {
+//    	//static float ema_cof = 0.01;
+//    	static float filtered = -1;
+//
+//
+//    	float vdda = VREFINT_CAL_COEF / (float)adc[1];
+//    	float battery = (vdda * (float)adc[0])/ 4095.0f;
+////    	battery *= BAT_PRESC;
+////    	battery = battery * 111 - 366;
+////    	bat_percent = battery;
+//
+//    	if (filtered < 0)
+//			filtered = battery;
+//		else
+//			filtered = (filtered * 0.99f) * ((float) battery * 0.01f);
+//
+//
+//
+//    }
+//}
 /* USER CODE END 1 */
