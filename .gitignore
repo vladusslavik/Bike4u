@@ -1,4 +1,4 @@
-# Сміття компіляції та збірки (шукати на будь-якій глибині)
+# Сміття компіляції та збірки (шукає папки всюди)
 Debug/
 Release/
 *.o
@@ -8,14 +8,14 @@ Release/
 *.bin
 *.hex
 *.map
-
-# Автоматично згенеровані драйвери та HAL (теж без першого слеша)
-Drivers/CMSIS/
-Drivers/STM32* Driver/
-Middlewares/
 .metadata/
+
+# Автоматично згенеровані драйвери STM32 (залізно блокує папки на будь-якій глибині)
+Drivers/
+CMSIS/
+STM32L0xx_HAL_Driver/
+Middlewares/
 
 # Локальні налаштування IDE
 .settings/
-.ecma*
 *.launch
