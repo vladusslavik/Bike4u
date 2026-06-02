@@ -13,11 +13,23 @@
 # Автоматично згенеровані драйвери та HAL
 # (Якщо твої папки називаються трохи інакше, підкоригуй шлях)
 /Drivers/CMSIS/
-/Drivers/STM32* Driver/
-/Middlewares/
+/Drivers# Сміття компіляції та збірки (шукати на будь-якій глибині)
+Debug/
+Release/
+*.o
+*.su
+*.d
+*.elf
+*.bin
+*.hex
+*.map
+
+# Автоматично згенеровані драйвери та HAL (теж без першого слеша)
+Drivers/CMSIS/
+Drivers/STM32* Driver/
+Middlewares/
 
 # Локальні налаштування IDE
 .settings/
 .ecma*
 *.launch
-

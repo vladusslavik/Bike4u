@@ -1,4 +1,0 @@
-../Libs/BLE/pb-03f.c:10:6:Write	1
-../Libs/BLE/pb-03f.c:19:6:Swap_BaundRate	1
-../Libs/BLE/pb-03f.c:33:6:Enter_AT_Mode_During_Connect	1
-../Libs/BLE/pb-03f.c:40:6:Init_BLE	1
