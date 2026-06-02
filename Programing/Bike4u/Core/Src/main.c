@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "control.h"
+#include "Schedule.h"
 
 #include "NRF24.h"
 #include "st7789v3.h"
@@ -176,21 +177,24 @@ int main(void)
 				brgh = 39;
 				  slp = 0;
 			  }
-			 //slp = (slp) ? 0 : 1;
 			  states &= ~MIDL_BUT;
 
 		  }
 
-		  if(states & LEFT_BUT)
+		  if(states & LEFT_BUT){
+			  if(brgh < 11)
+				  brgh = 10;
+			  else
 			  brgh -= 10;
+		  }
 
-		  if(states & RGHT_BUT)
+		  if(states & RGHT_BUT){
+			  if(brgh > 89)
+				  brgh = 99;
+			  else
 			  brgh += 10;
+		  }
 
-		  if(brgh > 99)
-			  brgh = 99;
-		  else if(brgh < 1)
-			  brgh = 1;
 	  }
 
 

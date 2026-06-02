@@ -100,12 +100,12 @@ void Error_Handler(void);
 #define EDGE_BAT_LOW		3.3
 #define	EDGE_BAT_HIGH		4.2
 
-#define LEFT_BUT		(1 << 0)
-#define RGHT_BUT		(2 << 0)
-#define MIDL_BUT		(3 << 0)
+#define LEFT_BUT		(1 << 1)
+#define RGHT_BUT		(1 << 2)
+#define MIDL_BUT		(1 << 3)
 
-#define CHRG			(4 << 0)
-#define STDBY			(5 << 0)
+#define CHRG			(1 << 4)
+#define STDBY			(1 << 5)
 
 
 

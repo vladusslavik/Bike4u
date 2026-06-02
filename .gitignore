@@ -13,6 +13,7 @@ Release/
 Drivers/CMSIS/
 Drivers/STM32* Driver/
 Middlewares/
+.metadata/
 
 # Локальні налаштування IDE
 .settings/
