@@ -1,0 +1,23 @@
+
+# Сміття компіляції та збірки (папки Debug та Release)
+/[Dd]ebug/
+/[Rr]elease/
+*.o
+*.su
+*.d
+*.elf
+*.bin
+*.hex
+*.map
+
+# Автоматично згенеровані драйвери та HAL
+# (Якщо твої папки називаються трохи інакше, підкоригуй шлях)
+/Drivers/CMSIS/
+/Drivers/STM32* Driver/
+/Middlewares/
+
+# Локальні налаштування IDE
+.settings/
+.ecma*
+*.launch
+

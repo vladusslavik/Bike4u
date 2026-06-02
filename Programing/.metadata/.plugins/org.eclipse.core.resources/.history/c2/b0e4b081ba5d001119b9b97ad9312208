@@ -1,0 +1,54 @@
+#include "pb-03f.h"
+#include <string.h>
+
+//extern UART_HandleTypeDef huart2;
+
+uint8_t ble_buf[247];
+
+uint8_t buf_ble[100];
+
+void Write(uint16_t delay, const char *COMMAND) {
+	//
+	memset(buf_ble, 0, sizeof(buf_ble));
+	//
+
+    HAL_UART_Transmit(UART_BLE, (uint8_t*)COMMAND, strlen(COMMAND), 100);
+    HAL_Delay(delay);
+}
+
+
+void Enter_AT_Mode_During_Connect(void) {
+    HAL_Delay(1000);
+    // Плюси шлемо строго без \r\n через стандартний Transmit
+    HAL_UART_Transmit(UART_BLE, (uint8_t*)"+++", 3, 100);
+    HAL_Delay(1000);
+}
+
+void Init_BLE(void) {
+    // 1. Даємо модулю 500 мс прокричатися стартовим логом у порожнечу
+    HAL_Delay(500);
+
+    // 2. Вмикаємо прийом DMA з Idle-обробником, щоб ловити відповіді ("OK")
+    HAL_UARTEx_ReceiveToIdle_DMA(UART_BLE, buf_ble, sizeof(buf_ble));
+
+    // 3. Тестовий штурх модуля (має відповісти OK)
+    Write(100, AT);
+
+    // 4. Налаштовуємо ім'я пристрою "Bike4u"
+    Write(100, BLENAME);
+
+    // 5. Виставляємо режим роботи (0 - Slave / периферія)
+    Write(100, BLEMODE);
+
+    // 6. Налаштовуємо інтервал трансляції (Advertising Interval)
+ //   Write(100, BLEADVINTV);
+
+    // 7. Вмикаємо видимість Bluetooth, щоб телефон міг його знайти
+    Write(100, BLEADVEN);
+
+    // 8. Заходимо в режим прозорого UART (Transparent Mode)
+    // Після цієї команди все, що STM32 шле в UART, летить на телефон
+  //  Write(100, TRANSENTER);
+
+    memset(buf_ble, 0, sizeof(buf_ble));
+}

@@ -1,0 +1,22 @@
+#pragma once
+
+#include "main.h"
+
+#define AT			"AT\r\n"
+#define RESET		"AT+RST\r\n"
+#define	SLEEP		"AT+SLEEP\r\n"
+#define ECHO_ON		"ATE1\r\n"
+#define ECHO_OFF	"ATE"
+
+// Допоміжні макроси для перетворення чисел у рядок
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+//Settings
+#define baudrate    115200
+#define databits    8
+#define stopbits    1
+#define parity      0
+
+// Автоматичне склеювання рядків компілятором
+#define UARTCFG     "AT+UART=" STR(baudrate) "," STR(databits) "," STR(stopbits) "," STR(parity) "\r\n"

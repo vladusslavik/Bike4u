@@ -1,0 +1,63 @@
+#include "pb-03f.h"
+#include <string.h>
+
+//extern UART_HandleTypeDef huart2;
+
+uint8_t ble_buf[247];
+
+uint8_t buf_ble[100];
+
+void Write(uint16_t delay, const char *COMMAND) {
+	//
+	memset(buf_ble, 0, sizeof(buf_ble));
+	//
+
+    HAL_UART_Transmit(UART_BLE, (uint8_t*)COMMAND, strlen(COMMAND), 100);
+    HAL_Delay(delay);
+}
+
+
+void Enter_AT_Mode_During_Connect(void) {
+    HAL_Delay(1000);
+    // Плюси шлемо строго без \r\n через стандартний Transmit
+    HAL_UART_Transmit(UART_BLE, (uint8_t*)"+++", 3, 100);
+    HAL_Delay(1000);
+}
+
+void Init_BLE(void) {
+    // 1. Даємо модулю 500 мс спокійно завантажитись і виплюнути лог у порожнечу
+	HAL_UARTEx_ReceiveToIdle_DMA(UART_BLE, buf_ble, sizeof(buf_ble));
+    HAL_Delay(500);
+
+    // 2. Базовий штурх (тест зв'язку)
+    Write(100, AT);
+
+    // 3. Вимикаємо ЕХО (щоб модуль не повертав нам назад наші ж АТ-команди в UART)
+    // Це дуже корисно для чистоти буфера приймача
+    Write(100, ECHO_OFF);
+
+    // 4. Налаштовуємо ім'я пристрою "Bike4u"
+    Write(100, BLENAME);
+
+    // 5. Виставляємо режим роботи (0 - Slave / периферія)
+    Write(100, BLEMODE);
+
+    // 6. Виставляємо максимальний розмір пакета даних (MTU = 247)
+    // Це дозволить штовхати за один раз великі пакети з навігацією чи треком
+    Write(100, BLEMTU);
+
+    // 7. Налаштовуємо інтервал трансляції (Advertising Interval)
+    Write(100, BLEADVINTV);
+
+    // 8. Вмикаємо видимість Bluetooth, щоб телефон прямо зараз побачив Bike4u
+    Write(100, BLEADVEN);
+
+    // --- З ЦЬОГО МОМЕНТУ МОДУЛЬ МОВЧИТЬ І ЧЕКАЄ НА ТЕЛЕФОН ---
+
+    // 9. Начисто вигрібаємо сміття з буфера приймача перед стартом
+    memset(buf_ble, 0, sizeof(buf_ble));
+
+    // 10. І ось тільки тепер піднімаємо DMA для прийому!
+    // Тепер ми готові ловити чисті дані або команди від телефона
+
+}

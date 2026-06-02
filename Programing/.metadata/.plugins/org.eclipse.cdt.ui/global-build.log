@@ -1,0 +1,730 @@
+19:07:59 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/Bike4u_control/control.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/Bike4u_control/control.d" -MT"Libs/Bike4u_control/control.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/Bike4u_control/control.o"
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30248	    112	   3624	  33984	   84c0	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:26:55 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Libs/BLE/pb-03f.c: In function 'Swap_BaundRate':
+../Libs/BLE/pb-03f.c:26:17: error: 'USART_TypeDef' has no member named 'CR'; did you mean 'CR1'?
+   26 |         USART2->CR |= USART_CR1_UE;
+      |                 ^~
+      |                 CR1
+make: *** [Libs/BLE/subdir.mk:19: Libs/BLE/pb-03f.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j7 all" terminated with exit code 2. Build might be incomplete.
+19:27:06 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30420	    112	   3624	  34156	   856c	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:31:13 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30404	    112	   3624	  34140	   855c	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:39:42 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30396	    112	   3624	  34132	   8554	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:41:19 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30420	    112	   3624	  34156	   856c	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:44:42 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30420	    112	   3624	  34156	   856c	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:45:53 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30432	    112	   3624	  34168	   8578	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:53:19 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Libs/BLE/pb-03f.c: In function 'Init_BLE':
+../Libs/BLE/pb-03f.c:53:16: error: 'RESTART' undeclared (first use in this function); did you mean 'RESET'?
+   53 |     Write(150, RESTART);
+      |                ^~~~~~~
+      |                RESET
+../Libs/BLE/pb-03f.c:53:16: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Libs/BLE/subdir.mk:19: Libs/BLE/pb-03f.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j7 all" terminated with exit code 2. Build might be incomplete.
+19:53:43 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30436	    112	   3624	  34172	   857c	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:54:57 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30444	    112	   3624	  34180	   8584	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+19:55:40 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30444	    112	   3624	  34180	   8584	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:04:15 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30448	    112	   3624	  34184	   8588	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:05:27 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30344	    112	   3624	  34080	   8520	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:07:08 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30344	    112	   3624	  34080	   8520	Bike4u.elf
+Finished building: default.size.stdout
+ 
+20:08:39 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30432	    112	   3624	  34168	   8578	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:09:42 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30344	    112	   3624	  34080	   8520	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:10:52 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30344	    112	   3624	  34080	   8520	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:11:42 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30344	    112	   3624	  34080	   8520	Bike4u.elf
+Finished building: default.size.stdout
+ 
+20:19:21 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+../Libs/BLE/pb-03f.c: In function 'Init_BLE':
+../Libs/BLE/pb-03f.c:49:36: error: expected ';' before 'Write'
+   49 |     Write(100, "AT+UARTCFG?\r\n\0")
+      |                                    ^
+      |                                    ;
+......
+   53 |     Write(150, UARTCFG);
+      |     ~~~~~                           
+make: *** [Libs/BLE/subdir.mk:19: Libs/BLE/pb-03f.o] Error 1
+"make -j7 all" terminated with exit code 2. Build might be incomplete.
+20:20:38 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30376	    112	   3624	  34112	   8540	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:21:59 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30384	    112	   3624	  34120	   8548	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:24:10 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30384	    112	   3624	  34120	   8548	Bike4u.elf
+Finished building: default.size.stdout
+ 
+20:26:56 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30384	    112	   3624	  34120	   8548	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:27:31 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30384	    112	   3624	  34120	   8548	Bike4u.elf
+Finished building: default.size.stdout
+ 
+20:29:41 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30384	    112	   3624	  34120	   8548	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:30:40 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30384	    112	   3624	  34120	   8548	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:32:00 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:33:12 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:33:50 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:34:28 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:35:48 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:46:17 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:47:58 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:48:41 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:55:41 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30476	    112	   3624	  34212	   85a4	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+20:57:01 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30364	    112	   3624	  34100	   8534	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+21:00:16 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30404	    112	   3624	  34140	   855c	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+21:01:33 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30412	    112	   3624	  34148	   8564	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+21:03:10 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30364	    112	   3624	  34100	   8534	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+21:25:58 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30364	    112	   3624	  34100	   8534	Bike4u.elf
+Finished building: default.size.stdout
+ 
+21:26:20 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30364	    112	   3624	  34100	   8534	Bike4u.elf
+Finished building: default.size.stdout
+ 
+21:26:34 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30364	    112	   3624	  34100	   8534	Bike4u.elf
+Finished building: default.size.stdout
+ 
+21:26:49 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30364	    112	   3624	  34100	   8534	Bike4u.elf
+Finished building: default.size.stdout
+ 
+22:37:08 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30424	    112	   3624	  34160	   8570	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+22:52:16 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/BLE/pb-03f.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/BLE/pb-03f.d" -MT"Libs/BLE/pb-03f.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/BLE/pb-03f.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30456	    112	   3624	  34192	   8590	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+23:15:48 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30456	    112	   3624	  34192	   8590	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+23:57:29 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30484	    112	   3624	  34220	   85ac	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+23:58:05 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30484	    112	   3624	  34220	   85ac	Bike4u.elf
+Finished building: default.size.stdout
+ 
+00:11:17 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30436	    112	   3624	  34172	   857c	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+00:12:13 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30496	    112	   3624	  34232	   85b8	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+22:46:33 **** Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Libs/Bike4u_control/control.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libs/Bike4u_control/control.d" -MT"Libs/Bike4u_control/control.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Libs/Bike4u_control/control.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30484	    112	   3624	  34220	   85ac	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+22:47:33 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30484	    112	   3624	  34220	   85ac	Bike4u.elf
+Finished building: default.size.stdout
+ 
+22:48:11 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30484	    112	   3624	  34220	   85ac	Bike4u.elf
+Finished building: default.size.stdout
+ 
+22:49:52 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30484	    112	   3624	  34220	   85ac	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 
+22:50:22 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-size  Bike4u.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30484	    112	   3624	  34220	   85ac	Bike4u.elf
+Finished building: default.size.stdout
+ 
+22:51:11 **** Incremental Build of configuration Debug for project Bike4u ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L010x8 -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/NRF24" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/ST7789" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/BLE" -I"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/Libs/Bike4u_control" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bike4u.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/Users/admin/Desktop/My Projects/Bike4u/Programing/Bike4u/STM32L010K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bike4u.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bike4u.elf
+ 
+arm-none-eabi-size  Bike4u.elf 
+arm-none-eabi-objdump -h -S Bike4u.elf  > "Bike4u.list"
+   text	   data	    bss	    dec	    hex	filename
+  30484	    112	   3624	  34220	   85ac	Bike4u.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bike4u.list
+ 

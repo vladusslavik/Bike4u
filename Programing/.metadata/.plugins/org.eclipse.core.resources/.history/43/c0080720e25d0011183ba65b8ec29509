@@ -1,0 +1,92 @@
+#include "pb-03f.h"
+#include <string.h>
+
+//extern UART_HandleTypeDef huart2;
+
+uint8_t ble_buf[247];
+
+uint8_t buf_ble[100];
+
+void Write(uint16_t delay, const char *COMMAND) {
+	//
+	memset(buf_ble, 0, sizeof(buf_ble));
+	//
+
+    HAL_UART_Transmit(HUART_BLE, (uint8_t*)COMMAND, strlen(COMMAND), 100);
+    HAL_Delay(delay);
+}
+
+void Swap_BaundRate(uint32_t baundrate){
+
+	uint32_t clock = 32000000;
+	USART2->CR1 &= ~USART_CR1_UE;
+
+	USART2->BRR = (clock + (baundrate / 2)) / baundrate;
+
+	USART2->CR1 |= USART_CR1_UE;
+
+
+
+}
+
+
+void Enter_AT_Mode_During_Connect(void) {
+    HAL_Delay(1000);
+    // Плюси шлемо строго без \r\n через стандартний Transmit
+    HAL_UART_Transmit(HUART_BLE, (uint8_t*)"+++", 3, 100);
+    HAL_Delay(1000);
+}
+
+void Init_BLE(void) {
+    // 1. Старт модуля. STM32 у CubeMX налаштований на дефолтні 115200!
+    HAL_Delay(600);
+    Swap_BaundRate(115200);
+    HAL_UARTEx_ReceiveToIdle_DMA(HUART_BLE, buf_ble, sizeof(buf_ble));
+
+    // 2. Тест зв'язку на 115200
+    Write(100, AT);
+
+
+
+    // 3. Відправляємо команду зміни швидкості на 921600
+    // Модуль відповість "OK" ще на швидкості 115200 і запише налаштування у флеш
+    Write(150, UARTCFG);
+
+    Write(100, UART_CONFIG);
+    // 4. Кажемо йому перевантажитись, щоб застосувати нову швидкість
+    Write(150, RST);
+    Write(100, UART_CONFIG);
+
+    // 5. КРИТИЧНА ПАУЗА для флешу модуля!
+    // Даємо йому цілих 600 мс, щоб він повністю згас, перезапустився
+    // і підняв свій UART вже на швидкості 921600 бод.
+    HAL_Delay(600);
+
+    // 6. Перемикаємо STM32 на швидкість 921600 бод через регістри
+   // Swap_BaundRate(921600);
+    HAL_Delay(100); // Даємо лініям стабілізуватися
+
+    // =================================================================
+    // МИ НА ШВИДКОСТІ 921600 БОД. ПЕРЕВІРЯЄМО ЕФІР
+    // =================================================================
+
+    // 7. Штурхаємо модуль на новій швидкості.
+    // Якщо залізо завелося, він відповість тут "OK"
+    Write(100, AT);
+
+    // 8. Вимикаємо ЕХО (на швидкості 921600 це критично, щоб не забити буфер)
+    Write(100, ECHO_OFF);
+
+    // 9. Інші налаштування BLE
+    Write(100, BLENAME);
+    Write(100, BLEMODE);
+    Write(100, BLEMTU);
+    Write(100, BLEADVINTV);
+    Write(100, BLEADVEN);
+
+    // 10. Чистимо буфер від накопичених "OK"
+    memset(buf_ble, 0, sizeof(buf_ble));
+
+    // 11. Вмикаємо DMA на повну силу для прийому картинок інтерфейсу!
+    HAL_UARTEx_ReceiveToIdle_DMA(HUART_BLE, buf_ble, sizeof(buf_ble));
+}

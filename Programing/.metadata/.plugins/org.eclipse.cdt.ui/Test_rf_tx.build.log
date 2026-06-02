@@ -1,0 +1,10 @@
+11:29:32 **** Build of configuration Debug for project Test_rf_tx ****
+make -j7 all 
+arm-none-eabi-size  Test_rf_tx.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13228	     92	   2068	  15388	   3c1c	Test_rf_tx.elf
+Finished building: default.size.stdout
+ 
+
+11:29:33 Build Finished. 0 errors, 0 warnings. (took 765ms)
+
