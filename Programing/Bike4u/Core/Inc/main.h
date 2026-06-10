@@ -53,7 +53,10 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void Battery_Measeru(void);
+void Set_Brightness(void);
+void Sleep(void);
+void DIMMER_TIM(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

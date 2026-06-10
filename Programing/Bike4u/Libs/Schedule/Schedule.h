@@ -17,7 +17,8 @@ typedef struct{
 
 void Scheduler_RunTask(Task *task);
 
-
+extern const uint8_t TASK_COUNT;
+extern Task regular[];
 
 #endif
 

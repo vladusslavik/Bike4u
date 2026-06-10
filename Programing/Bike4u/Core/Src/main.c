@@ -64,6 +64,7 @@ DMA_HandleTypeDef hdma_usart2_rx;
 
 
 uint8_t r = 0, g = 50, b = 30;
+uint8_t color[3] = {0,60,0};
 uint16_t x, y;
 uint8_t brgh = 39;
 
@@ -79,6 +80,9 @@ uint16_t adc[2] = {0};
 uint8_t bat_percent;
 
 uint16_t del_bat = 1000;
+
+
+extern Task regular[];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -147,7 +151,7 @@ int main(void)
   //HAL_UART_Receive_DMA(&huart2, buf_ble, 50);
 //  HAL_UARTEx_ReceiveToIdle_DMA(&huart2, buf_ble, 50);
 
-  uint8_t color[3] = {0,60,0};
+
   FillScreen(r, g, b);
   ST7789_DrawString(20, 100, "Bike4u", color, 5);
 
@@ -159,55 +163,59 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  TIM_SET_COMPARE_BRGH(TIM2, brgh);
+	  for (uint8_t i = 0; i < TASK_COUNT; i++)
+	 	  Scheduler_RunTask(&regular[i]);
+
+
+//	  TIM_SET_COMPARE_BRGH(TIM2, brgh);
 
 
 	  static uint32_t timing;
 	  if(uwTick - timing > 100){
 		  timing = uwTick;
 
-		  if(states & MIDL_BUT){
-			  if(!slp){
-				ST7789_Sleep_In();
-				brgh = 0;
-				slp = 1;
-			  }
-			  else{
-				ST7789_Sleep_Out();
-				brgh = 39;
-				  slp = 0;
-			  }
-			  states &= ~MIDL_BUT;
+//		  if(states & MIDL_BUT){
+//			  if(!slp){
+//				ST7789_Sleep_In();
+//				brgh = 0;
+//				slp = 1;
+//			  }
+//			  else{
+//				ST7789_Sleep_Out();
+//				brgh = 39;
+//				  slp = 0;
+//			  }
+//			  states &= ~MIDL_BUT;
+//
+//		  }
 
-		  }
-
-		  if(states & LEFT_BUT){
-			  if(brgh < 11)
-				  brgh = 10;
-			  else
-			  brgh -= 10;
-		  }
-
-		  if(states & RGHT_BUT){
-			  if(brgh > 89)
-				  brgh = 99;
-			  else
-			  brgh += 10;
-		  }
+//		  if(states & LEFT_BUT){
+//			  if(brgh < 11)
+//				  brgh = 10;
+//			  else
+//			  brgh -= 10;
+//		  }
+//
+//		  if(states & RGHT_BUT){
+//			  if(brgh > 89)
+//				  brgh = 99;
+//			  else
+//			  brgh += 10;
+//		  }
 
 	  }
 
 
 
-	  static uint32_t timing_bat;
-	  	  if(uwTick - timing_bat > del_bat){
-	  		  timing_bat = uwTick;
-	  		HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc, 2);
-	  		  uint8_t buf[6];
-
-	  		  sprintf((char*)buf,"%3d%%",bat_percent);
-	  		ST7789_DrawString(200, 40, (char*)buf, color, 2);
-	  	  }
+//	  static uint32_t timing_bat;
+//	  	  if(uwTick - timing_bat > del_bat){
+//	  		  timing_bat = uwTick;
+//	  		HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc, 2);
+//	  		  uint8_t buf[6];
+//
+//	  		  sprintf((char*)buf,"%3d%%",bat_percent);
+//	  		ST7789_DrawString(200, 40, (char*)buf, color, 2);
+//	  	  }
 
 
     /* USER CODE END WHILE */
@@ -656,6 +664,58 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size){
 
 		HAL_UARTEx_ReceiveToIdle_DMA(huart, buf_ble, 60);
 	}
+
+}
+
+void Battery_Measeru(void){
+	HAL_ADC_Start_DMA(&hadc, (uint32_t*) adc, 2);
+	uint8_t buf[6];
+
+	sprintf((char*) buf, "%3d%%", bat_percent);
+	ST7789_DrawString(200, 40, (char*) buf, color, 2);
+}
+
+void Set_Brightness(void){
+	if (states & LEFT_BUT) {
+		if (brgh < 11)
+			brgh = 10;
+		else
+			brgh -= 10;
+//		TIM_SET_COMPARE_BRGH(TIM2, brgh);
+		regular[3].enable = 1;
+	}
+
+	if (states & RGHT_BUT) {
+		if (brgh > 89)
+			brgh = 99;
+		else
+			brgh += 10;
+//		TIM_SET_COMPARE_BRGH(TIM2, brgh);
+		regular[3].enable = 1;
+	}
+}
+void Sleep(void){
+
+	 if(states & MIDL_BUT){
+				  if(!slp){
+					ST7789_Sleep_In();
+					brgh = 0;
+					slp = 1;
+				  }
+				  else{
+					ST7789_Sleep_Out();
+					brgh = 39;
+					  slp = 0;
+				  }
+				  states &= ~MIDL_BUT;
+				  regular[3].enable = 1;
+			  }
+
+}
+
+void DIMMER_TIM(void){
+	TIM_SET_COMPARE_BRGH(TIM2, brgh);
+	regular[3].enable = 0;
 
 }
 /* USER CODE END 4 */
